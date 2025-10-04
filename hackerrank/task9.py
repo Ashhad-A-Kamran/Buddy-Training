@@ -16,23 +16,23 @@ Initialize your list and read in the value of  followed by  lines of commands wh
 
 
 N = int(input())
-l=[]
+l = []
 
-for i in range(0,N):
-    take_input = input().split(" ")
+for i in range(N):
+    take_input = input().split()
+
     if take_input[0] == "insert":
-        l.insert(int(take_input[1]), take_input[2])
-    elif take_input[0] == "append":
-        l.append(take_input[1])
-    elif take_input[0] == "remove":
-        l.remove(take_input[1])
+        l.insert(int(take_input[1]), int(take_input[2]))
     elif take_input[0] == "print":
         print(l)
+    elif take_input[0] == "remove":
+        l.remove(int(take_input[1]))
+    elif take_input[0] == "append":
+        l.append(int(take_input[1]))
     elif take_input[0] == "sort":
         l.sort()
-    elif take_input == "pop":
+    elif take_input[0] == "pop":
         l.pop()
-    elif take_input == "reverse":
+    elif take_input[0] == "reverse":
         l.reverse()
-    else:
-        print("Invalid input")
+
