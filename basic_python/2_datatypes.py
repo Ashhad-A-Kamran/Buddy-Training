@@ -140,7 +140,7 @@
 
 
 
-# Assignment 3
+# # Assignment 3
 # import json
 # product1 = {
 #     "info": ("Shoe", "wearable"),
@@ -247,9 +247,11 @@ for i in range(len(sorted_students)):
     name = sorted_students[i][0]
     sorted_dict[name] = (sorted_students[i][1], sorted_students[i][2])
 
-
+print("sorted_dict: ", sorted_dict)
 for i,item in enumerate(sorted_dict.items()):
     if i<2:
         print("Top students: ", item[0])
+    else:
+        break
 
 
