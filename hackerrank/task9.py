@@ -33,6 +33,6 @@ for i in range(N):
         l.sort()
     elif take_input[0] == "pop":
         l.pop()
-    elif take_input[0] == "reverse":
+    elif take_input[0] == "revers`e":
         l.reverse()
 
