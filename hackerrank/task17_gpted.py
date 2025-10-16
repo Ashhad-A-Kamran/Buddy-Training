@@ -101,9 +101,6 @@ Write @require_login decorator that only runs the function if logged_in = True.
 #            print("You have logged in!")
 #        else:
 #             print("Please Login first") 
-
-
-
 #     return wrapper
 
 
