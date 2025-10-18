@@ -1102,18 +1102,18 @@ Expected Result: 21
 """
 
 
-test_data = [1, 2, [3,4], [5,6], [2,34,[4,3]]]
+# test_data = [1, 2, [3,4], [5,6], [2,34,[4,3]]]
 
-def cal_sum(test):
-    total =0
-    for i in test:
-        if isinstance(i, list):
-            total += cal_sum(i)
-        else:
-            total += i
+# def cal_sum(test):
+#     total =0
+#     for i in test:
+#         if isinstance(i, list):
+#             total += cal_sum(i)
+#         else:
+#             total += i
 
-    return total
-print(cal_sum(test_data))
+#     return total
+# print(cal_sum(test_data))
 
 
 """ 40
@@ -1127,4 +1127,335 @@ Example :
 1 + (1/2) + (1/3) + (1/4) + (1/5)
 """
 
+
 # def harmonic_sum_upto(n):
+#     if n == 1:
+#         return 1
+#     else:
+#         return 1/n + harmonic_sum_upto(n - 1)
+
+# print(harmonic_sum_upto(5))
+
+
+""" 41
+Write a Python program to calculate the value of 'a' to the power of 'b' using recursion.
+
+Test Data :
+(power(3,4) -> 81
+"""
+
+
+# def power(a,b):
+#     if b == 0:
+#         return 1
+#     return a * power(a, b-1)
+
+# print(power(3,4))
+
+
+
+
+""" 42 AI studio Gemini
+Design a decorator requires_role(required_role) that checks if the current user (simulated, e.g., via a global variable or a dummy get_current_user_role function) has the specified role to access a function. If not, it should print "Permission denied."
+"""
+
+
+
+# allowed = ['ashhad', 'ali']
+
+
+
+# def requires_role(name):
+#     def decorator(func):
+#         def wrapper(*args, **kwargs):
+            
+#             if name in allowed:
+#                 result = func(*args, **kwargs)
+#                 return result
+#             else:
+#                 print("Permission denied")
+
+#         return wrapper
+#     return decorator
+
+
+# @requires_role("ashhad")
+# def run_some(b):
+#     return b*5
+
+
+# print(run_some(4))
+
+
+
+""" 43 Gemini
+Create a decorator validate_input(min_val, max_val, arg_index) that validates a specific numerical argument of the decorated function. It should ensure the argument (at arg_index) falls within min_val and max_val. If not, raise a ValueError.
+
+"""
+
+
+# def validate_input(min_val, max_val, arg_index):
+#     def decorator(func):
+#         def wrapper(*args, **kwargs):
+#             try:
+#                 arg_value = args[arg_index]
+#             except IndexError:
+#                 raise ValueError("Invalid argument index")
+
+#             if arg_value < min_val or arg_value > max_val:
+#                 raise ValueError(f"Please check your value is in range. MAX:{max_val}, MIN: {min_val}")
+#             return func(*args, **kwargs)
+                   
+#         return wrapper
+#     return decorator
+
+# @validate_input(5, 100, 0)
+# def some_func(a,b):
+
+#     return a*b
+
+
+
+# c = some_func
+# print(c(4,101))
+
+
+""" 44
+
+Write a function safe_divide(numerator, denominator, default_value=0) that performs division. If a ZeroDivisionError occurs, it should return default_value instead of crashing.
+
+"""
+
+# def function_safe_divide(numerator, denominator, default_value=0):
+#     if denominator ==0 or numerator ==0:
+#         return default_value
+#     else:
+#         return numerator / denominator
+        
+
+
+# print(function_safe_divide(3,0))
+# print(function_safe_divide(3,2))
+# print(function_safe_divide(256,4))
+
+
+
+
+""" 45
+
+Write a function get_list_element(data_list, index, default_value=None) that safely retrieves an element from a list. If the index is out of bounds, it should return default_value.
+
+"""
+
+# def get_list_element(data_list, index, default_value=None):
+#     if index > len(data_list):
+#         return default_value
+#     else:
+#         return data_list[index]
+    
+
+# print(get_list_element([3,2,1,"asdasd"], 3))
+# print(get_list_element([3,2,1,"asdasd"], 8))
+# print(get_list_element([3,2,1,"asdasd"], 3))
+
+
+""" 46
+
+Implement a function read_config(config_dict, key_path, default_value=None) that retrieves a value from a potentially nested dictionary using a "key path" (e.g., "server.port"). If any key in the path is missing, it should return default_value.
+
+"""
+
+# def read_config(config_dict, key_path, default_value=None):
+#     pass
+
+
+# dict1 = {'some': "value",
+#         "nested": 
+#             {5 : 21313},
+#         "missing value": None
+#         }
+# path = 4
+
+
+
+
+""" 47
+Write a higher-order function map_list(items, transform_callback) that takes a list of items and a transform_callback function. It should apply the callback to each item and return a new list with the transformed results.
+
+"""
+
+
+# def map_list(items, transform_callback):
+#     converted_list = []
+#     for i in items:
+#         result = transform_callback(i)
+#         converted_list.append(result)
+#     return converted_list
+
+
+# def apply_transformation(a):
+#     return a * 2
+
+# nums = [2,4,6,8,9]
+
+
+# results = map_list(nums, apply_transformation)
+
+# print(results)
+
+
+
+
+""" 48
+Implement filter_list(items, predicate_callback) that takes a list and a predicate_callback (a function returning True or False). It should return a new list containing only items for which the callback returns True.
+
+"""
+
+# def filter_list(items, predicate_callback):
+#     new_l = []
+#     for item in items:
+#         if predicate_callback(item):
+#             new_l.append(item)
+#     return new_l
+
+
+# def return_state(a):
+#     return a > 5
+
+
+# numbers = [2, 6, 8, 3, 10, 1]
+# filtered = filter_list(numbers, return_state)
+# print(filtered)
+
+
+""" 49
+
+Create a class EventEmitter that allows registering multiple callback functions for specific event names (strings). It should have a on(event_name, callback) method to register and an emit(event_name, *args, **kwargs) method to trigger all registered callbacks for that event.
+
+emitter = EventEmitter()
+def greet(name): print(f"Hello, {name}!")
+def farewell(name): print(f"Goodbye, {name}!")
+emitter.on("greet", greet)
+emitter.on("farewell", farewell)
+emitter.emit("greet", "Alice")
+
+"""
+
+
+
+
+
+
+
+
+
+""" 50
+Write a function simulate_async_task(data, on_success_callback, on_failure_callback) that simulates an operation that might succeed or fail after a delay (use time.sleep). If it succeeds, call on_success_callback with data. If it fails, call on_failure_callback with an error message.
+
+
+Example:
+def success_handler(result): print(f"Task successful: {result}")
+def failure_handler(error): print(f"Task failed: {error}")
+# simulate_async_task("User data", success_handler, failure_handler)
+"""
+
+# import time
+
+# def simulate_async_task(data, on_success_callback, on_failure_callback):
+#     start_time = time.time()
+#     data*2
+#     time.sleep(0.5)
+#     end_time  = time.time()
+#     time_taken = end_time - start_time
+#     print(f"Start: {start_time},\n End Time: {end_time},\n Time Taken: {time_taken}")
+    
+#     if time_taken > 0.5:
+#         on_failure_callback()
+#     else:
+#         on_success_callback()
+
+
+# def succeeds(): print('Function succeeded')
+
+# def fails(): print('Function failed')
+
+# data = [2,3,4,5,6,7,8, [2,3,4,5,6,6,7, [2,3,4,5,5,6,76]]]
+
+# simulate_async_task(data, succeeds, fails)
+
+
+
+
+""" 51
+Design a function run_pipeline(initial_data, *pipeline_stages) where pipeline_stages are callback functions. Each stage takes the output of the previous stage as input. The function should return the final result after all stages are executed.
+
+
+Example:
+def add_one(x): return x + 1
+def multiply_by_two(x): return x * 2
+print(run_pipeline(5, add_one, multiply_by_two)) # (5 + 1) * 2 = 12
+"""
+
+
+# def run_pipeline(initial_data, *pipeline_stages):
+    
+#     result_1 = func1(initial_data)
+#     result_2 = func2(result1)
+#     result_3 = func3(result2)
+
+#     results = 
+#     for i in pipeline_stages:
+#         result = i(initial_data)
+
+
+
+# def add_one(x): return x + 1
+
+# def multiply_by_two(x): return x * 2
+
+
+
+# print(run_pipeline(5, add_one, multiply_by_two))
+
+
+
+
+""" 52
+
+Design a function run_pipeline(initial_data, *pipeline_stages) where pipeline_stages are callback functions. Each stage takes the output of the previous stage as input. The function should return the final result after all stages are executed.
+
+Example:
+def add_one(x): return x + 1
+def multiply_by_two(x): return x * 2
+print(run_pipeline(5, add_one, multiply_by_two)) # (5 + 1) * 2 = 12
+"""
+
+
+
+
+""" 53
+Implement a function custom_sort(items, compare_func) that sorts a list of items using compare_func(a, b) which returns True if a should come before b, False otherwise. (You can use Python's built-in sort with a key if you prefer, but the problem intends for you to implement the comparison logic via callback for sorting itself).
+
+Example:
+data = [(1, 'apple'), (3, 'banana'), (2, 'cherry')]
+def sort_by_second_element(item1, item2): return item1[1] < item2[1]
+# print(custom_sort(data, sort_by_second_element)) # Sorts by fruit name
+
+"""
+
+
+
+
+
+
+
+
+
+""" 54
+
+Write a HOF apply_twice(func, arg) that applies func to arg, and then applies func again to the result of the first application.
+
+example:
+def add_5(x): return x + 5
+print(apply_twice(add_5, 10)) # (10 + 5) + 5 = 20
+"""
