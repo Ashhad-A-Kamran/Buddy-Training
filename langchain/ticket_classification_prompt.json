@@ -1,0 +1,15 @@
+{
+    "name": null,
+    "input_variables": [
+        "ticket"
+    ],
+    "optional_variables": [],
+    "output_parser": null,
+    "partial_variables": {},
+    "metadata": null,
+    "tags": null,
+    "template": "You are a support assistant. Read the following ticket and classify it into one of: [Billing, Technical Issue, Account Access, General Inquiry]. Ticket: {ticket}",
+    "template_format": "f-string",
+    "validate_template": false,
+    "_type": "prompt"
+}

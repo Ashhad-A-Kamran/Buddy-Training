@@ -52,47 +52,6 @@ Sample Output
 Stuart 12
 
 """
-# def minion_game(s):
-#     # your code goes here
-#     vowels = ['a', 'e', 'i' , 'o' ,'u']
-
-#     stuart_points = 0
-#     kevin_points = 0
-
-#     stuart_list = []
-#     kevin_list = []
-
-    
-
-#     def checker(a, string):
-#         nonlocal kevin_list
-#         nonlocal kevin_points
-#         if a in string:
-#             kevin_points += 1
-#             kevin_list.append(i)
-#         return kevin_list
-
-#     for i in s:
-#         if i in vowels:
-#             kevin_points += 1
-#             kevin_list.append(i)
-#             b = checker("".join(kevin_list), s)
-#             print("B: ", b)
-#             print(kevin_list)
-#             print("Kevin points if: ", kevin_points)
-#         else:
-#             kevin_points += 1
-#             kevin_list.append(i)
-
-#             print("Else: ", kevin_list)
-#             print("Kevin points else: ", kevin_points)
-
-
-# string = "banana"
-
-# print(minion_game(string))
-
-
 
 def minion_game(string):
     vowels = ['a', 'e', 'i', 'o', 'u']
