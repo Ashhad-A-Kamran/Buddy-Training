@@ -1342,9 +1342,16 @@ emitter.emit("greet", "Alice")
 """
 
 
+class EventEmitter():
+    
 
 
-
+emitter = EventEmitter()
+def greet(name): print(f"Hello, {name}!")
+def farewell(name): print(f"Goodbye, {name}!")
+emitter.on("greet", greet)
+emitter.on("farewell", farewell)
+emitter.emit("greet", "Alice")
 
 
 
@@ -1432,6 +1439,23 @@ print(run_pipeline(5, add_one, multiply_by_two)) # (5 + 1) * 2 = 12
 
 
 
+# def run_pipeline(initial_data, *pipeline_stages):
+#         print()
+
+#         result1 = pipeline_stages[0](initial_data)
+#         print(result1)
+
+#         result2 = pipeline_stages[1](result1)
+#         print(result2)
+#         return result2
+
+
+
+# def add_one(x): return x + 1
+# def multiply_by_two(x): return x * 2
+# result = run_pipeline(5, add_one, multiply_by_two)
+# print(result)
+
 
 """ 53
 Implement a function custom_sort(items, compare_func) that sorts a list of items using compare_func(a, b) which returns True if a should come before b, False otherwise. (You can use Python's built-in sort with a key if you prefer, but the problem intends for you to implement the comparison logic via callback for sorting itself).
@@ -1444,12 +1468,18 @@ def sort_by_second_element(item1, item2): return item1[1] < item2[1]
 """
 
 
+# def custom_sort(items, compare_func):
+#     for i in range(len(items)):
+#         for j in range(0-i-1):
+#             if not compare_func(compare_func(items[i], items[i+1])):
+#                 items[j], items[j+1] = items[j+1], items[j]
+#     return items
 
-
-
-
-
-
+# data = [(1, 'apple'), (3, 'banana'), (2, 'cherry')]
+# def sort_by_second_element(item1, item2): 
+#     print("item 1 and 2: ", item1[0], item2[0])
+#     return item1[0] < item2[0]
+# print(custom_sort(data, sort_by_second_element))
 
 """ 54
 
@@ -1458,4 +1488,232 @@ Write a HOF apply_twice(func, arg) that applies func to arg, and then applies fu
 example:
 def add_5(x): return x + 5
 print(apply_twice(add_5, 10)) # (10 + 5) + 5 = 20
+"""
+
+
+# def apply_twice(func, arg):
+#     result = func(arg)
+
+#     new_result = func(result)
+#     return new_result
+
+# def add_5(x): return x + 5
+# print(apply_twice(add_5, 10)) # (10 + 5) + 5 = 20
+
+
+
+""" 55
+Write a function deep_get(dictionary, keys, default=None) that retrieves a value from a nested dictionary given a list of keys, returning default if any key in the path is not found.
+"""
+
+# def deep_get(dictionary, keys, default=None):
+#     for key in keys:
+#         if isinstance(dictionary, dict) and key in dictionary:
+#             dictionary = dictionary[key]
+#         else:
+#             return default
+#     return dictionary
+
+# example_dict = {'a': {'b': {'c': 42}}}
+# print(deep_get(example_dict, ['a', 'b', 'c']))
+# print(deep_get(example_dict, ['a', 'x', 'c'], default='not found'))
+
+
+
+""" 56
+Implement a generator read_column(filepath, column_index, delimiter=',') that yields specific column values from a CSV file line by line.
+
+"""
+# def read_column(filepath, column_index, delimiter=','):
+#     with open(filepath, 'r') as f:
+#         for line in f:
+#             parts = line.strip().split(delimiter)
+#             if len(parts) > column_index:
+#                 yield parts[column_index]
+
+# for value in read_column('data.csv', 1):
+#     print(value)
+
+
+
+""" 57
+Design a decorator transactional that ensures a function's side effects are only committed if it executes without error. If an error occurs, any changes (e.g., to a shared list or dictionary passed as an argument) should be rolled back.
+
+"""
+
+
+# import copy
+
+# def transactional(func):
+#     def wrapper(*args, **kwargs):
+#         backups = []
+#         for a in args:
+#             if isinstance(a, (list, dict)):
+#                 backups.append(copy.deepcopy(a))
+#             else:
+#                 backups.append(None)
+#         try:
+#             return func(*args, **kwargs)
+#         except Exception:
+#             for i, a in enumerate(args):
+#                 if backups[i] is not None:
+#                     if isinstance(a, list):
+#                         a[:] = backups[i]
+#                     elif isinstance(a, dict):
+#                         a.clear()
+#                         a.update(backups[i])
+#             print("Error! Rolled back.")
+#     return wrapper
+
+# @transactional
+# def modify_data(data):
+#     data.append(10)
+#     data.append(20)
+#     raise ValueError("oops")
+
+# my_list = [1, 2, 3]
+# modify_data(my_list)
+# print(my_list)
+
+
+
+""" 58
+Create a closure moving_median(window_size) that returns a function. The returned function, when called with a new number, maintains a window of the last window_size numbers and returns their median."""
+
+
+
+# def moving_median(window_size):
+#     nums = []
+#     def add_number(n):
+#         nums.append(n)
+#         if len(nums) > window_size:
+#             nums.pop(0)
+#         s = sorted(nums)
+#         m = len(s)
+#         if m % 2 == 1:
+#             return s[m//2]
+#         else:
+#             return (s[m//2 - 1] + s[m//2]) / 2
+#     return add_number
+
+# f = moving_median(3)
+# print(f(1))
+# print(f(5))
+# print(f(2))
+# print(f(10))
+
+
+
+
+""" 59
+
+Write a higher-order function memoize_with_timeout(timeout_seconds) that returns a decorator. This decorator caches function results, but invalidates them after timeout_seconds.
+"""
+
+
+# import time
+
+# def memoize_with_timeout(timeout_seconds):
+#     def decorator(func):
+#         cache = {}
+#         def wrapper(*args):
+#             now = time.time()
+#             if args in cache:
+#                 value, t = cache[args]
+#                 if now - t < timeout_seconds:
+#                     return value
+#             result = func(*args)
+#             cache[args] = (result, now)
+#             return result
+#         return wrapper
+#     return decorator
+
+# @memoize_with_timeout(3)
+# def add(a, b):
+#     print("Calculating...")
+#     return a + b
+
+# print(add(2, 3))
+# time.sleep(2)
+# print(add(2, 3))
+# time.sleep(2)
+# print(add(2, 3))
+
+
+
+
+""" 60
+Implement a generator zip_longest_fill(list1, list2, fillvalue=None) that behaves like itertools.zip_longest.
+
+itertools.zip_longest(*iterables, fillvalue=None): Continues until the longest iterable is exhausted. For iterables that run out of items, it fills in the missing values with fillvalue (which defaults to None).
+
+"""
+# def zip_longest_fill(list1, list2, fillvalue=None):
+#     max_len = max(len(list1), len(list2))
+#     for i in range(max_len):
+#         a = list1[i] if i < len(list1) else fillvalue
+#         b = list2[i] if i < len(list2) else fillvalue
+#         yield (a, b)
+
+# for x in zip_longest_fill([1,2,3], ['a'], fillvalue=0):
+#     print(x)
+
+
+
+
+""" 61
+Design a callback system for a ProgressBar class, where on_progress is called with the current percentage and on_complete is called when done.
+"""
+
+# def make_progress_bar(on_progress, on_complete):
+#     def run(total):
+#         for i in range(total + 1):
+#             percent = int(i / total * 100)
+#             on_progress(percent)
+#         on_complete()
+#     return run
+
+# def show_progress(p):
+#     print("Progress:", p, "%")
+
+# def done():
+#     print("Done!")
+
+# bar = make_progress_bar(show_progress, done)
+# bar(5)
+
+
+
+
+""" 62
+Create a decorator log_exceptions(logger_func) that catches any exception raised by the decorated function and logs it using the provided logger_func before re-raising the exception.
+
+
+"""
+
+# def log_exceptions(logger_func):
+#     def decorator(func):
+#         def wrapper(*args, **kwargs):
+#             try:
+#                 return func(*args, **kwargs)
+#             except Exception as e:
+#                 logger_func(f"Error in {func.__name__}: {e}")
+#                 raise
+#         return wrapper
+#     return decorator
+
+# def my_logger(msg):
+#     print("LOG:", msg)
+
+# @log_exceptions(my_logger)
+# def divide(a, b):
+#     return a / b
+
+# divide(5, 0)
+
+
+
+
+"""63
+Write a function find_longest_common_prefix(strings) that takes a list of strings and returns their longest common prefix.
 """
