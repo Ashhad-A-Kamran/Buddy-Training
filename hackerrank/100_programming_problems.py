@@ -2154,13 +2154,356 @@ Implement a recursive function count_occurrences_in_nested_list(item, nested_lis
 #                 count += 1
 #     return count
 
-
-
 # nested_list = [1, [2, 3, [1, 4, 1]], [1, 2, [1, [1]]]]
 # print(count_occurrences_in_nested_list(1, nested_list))
 
+"""80
 
-""" 
+Design a callback system for a QueueProcessor that calls on_item_processed after each item is handled and on_empty_queue when the queue is clear.
+
+Processing: Download File 1
+ Finished processing: Download File 1
+Processing: Download File 2
+ Finished processing: Download File 2
+Processing: Download File 3
+ Finished processing: Download File 3
+
+  All items processed! Queue is now empty.
+"""
+
+# from collections import deque
+
+# def make_queue_processor(on_item_processed, on_empty_queue):
+#     q = deque()
+#     def add_item(item):
+#         q.append(item)
+#     def process():
+#         while q:
+#             item = q.popleft()
+#             on_item_processed(item)
+#         on_empty_queue()
+#     return add_item, process
+
+# def item_done(item):
+#     print("Processed:", item)
+
+# def queue_done():
+#     print("Queue is empty!")
+
+# add, run = make_queue_processor(item_done, queue_done)
+# add("task1")
+# add("task2")
+# run()
+
+
+
+
+
+""" 81
+Create a decorator inject_dependencies(**dependencies) that injects pre-defined dependencies as keyword arguments into the decorated function.
+For instance, if you decorate a function with @inject_dependencies(db="DB", cache="CACHE"), those values are passed in every time the function runs — even if the caller doesn’t provide them.
+"""
+
+# def inject_dependencies(**dependencies):
+#     def decorator(func):
+#         def wrapper(*args, **kwargs):
+#             kwargs.update(dependencies) # overwrites key-value pairs in kwargs
+#             return func(*args, **kwargs)
+#         return wrapper
+#     return decorator
+
+# @inject_dependencies(db="DB connection", cache="some cached value")
+# def process_request(user, db=None, cache=None):
+#     print("User:", user)
+#     print("DB:", db)
+#     print("Cache:", cache)
+
+# process_request("Osama")
+
+""" 82
+Create a function resolve_dns(hostname, on_success, on_failure) that pretends to look up a website’s IP address.
+If the lookup “succeeds,” it calls on_success(ip_address).
+If it “fails,” it calls on_failure(error_message).
+
+Example usage:
+
+resolve_dns("example.com", on_success=print, on_failure=print)
+"""
+
+
+# def resolve_dns(hostname):
+#     dns = {
+#         "example.com": "93.184.216.34",
+#         "google.com": "142.250.72.14",
+#         "openai.com": "104.18.12.123"
+#     }
+#     if hostname in dns:
+#         print("Host found: " + dns[hostname])
+#     else:
+#         print("Fake host not found: " + hostname)
+
+# resolve_dns("example.com")
+# resolve_dns("unknownsite.com")
+
+
+
+
+""" 83
+Implement a generator subsequences(input_list) that yields all possible subsequences of a given list.
+"""
+
+# def subsequences(input_list):
+#     yield []
+#     for i in range(len(input_list)):
+#         for sub in subsequences(input_list[i + 1:]):
+#             yield [input_list[i]] + sub
+
+
+
+
+
+""" 84
+
+Design a closure batch_processor(batch_size, process_batch_func) that returns a function. This function collects items and calls process_batch_func once batch_size items are collected.
+
+"""
+
+# def batch_processor(batch_size, process_batch_func):
+#     items = []
+#     def add_item(item):
+#         items.append(item)
+#         if len(items) == batch_size:
+#             process_batch_func(items)
+#             items.clear()
+#     return add_item
+
+# def process_batch(batch):
+#     print("Processing batch:", batch)
+
+# f = batch_processor(3, process_batch)
+# f(1)
+# f(2)
+# f(3)
+
+
+
+"""85
+
+Create a decorator require_secure_connection that checks if a simulated "is_secure_context" global or context variable is True. If not, it raises an error.
+
+"""
+# is_secure_context = False
+
+# def require_secure_connection(func):
+#     def wrapper(*args, **kwargs):
+#         if not is_secure_context:
+#             raise ValueError("Insecure connection not allowed")
+#         return func(*args, **kwargs)
+#     return wrapper
+
+# @require_secure_connection
+# def send_data():
+#     print("Data sent securely")
+
+# send_data()
+
+
+""" 86
+Write a generator random_subset(population, k) that gives k random unique items from a list.
+
+Example usage:
+
+for item in random_subset([1, 2, 3, 4, 5], 3):
+    print(item)
+
+    """
+
+
+# import random
+
+# def random_subset(population, k):
+#     pool = population[:]
+#     for _ in range(k):
+#         if not pool:
+#             break
+#         index = random.randint(0, len(pool) - 1)
+#         yield pool.pop(index)
+
+# for item in random_subset([1, 2, 3, 4, 5], 3):
+#     print(item)
+
+
+
+""" 87
+Design a higher-order function profile_cpu_time that returns a decorator. This decorator measures the CPU time spent by the decorated function.
+
+"""
+
+
+
+# import time
+
+# def profile_cpu_time():
+#     def decorator(func):
+#         def wrapper(*args, **kwargs):
+#             start = time.process_time()
+#             result = func(*args, **kwargs)
+#             end = time.process_time()
+#             print("CPU time:", end - start, "seconds")
+#             return result
+#         return wrapper
+#     return decorator
+
+# @profile_cpu_time()
+# def do_work():
+#     total = 0
+#     for i in range(1000000):
+#         total += i
+#     return total
+
+# do_work()
+
+
+
+""" 88
+Create a closure data_version_tracker(initial_data) that returns get_data and update_data functions. update_data should store new versions, and get_data should return the current version.
+"""
+
+
+
+# def data_version_tracker(initial_data):
+#     versions = [initial_data]
+#     def get_data():
+#         return versions[-1]
+#     def update_data(new_data):
+#         versions.append(new_data)
+#     return get_data, update_data
+
+# get, update = data_version_tracker({"value": 10})
+# print(get())
+# update({"value": 20})
+# print(get())
+# update({"value": 30})
+# print(get())
+
+
+""" 89
+Write a function schedule_task_at_interval(func, interval_seconds, times, *args, **kwargs) that calls func repeatedly at the given interval for a fixed number of times.
+"""
+# import time
+
+# def schedule_task_at_interval(func, interval_seconds, times, *args, **kwargs):
+#     for _ in range(times):
+#         func(*args, **kwargs)
+#         time.sleep(interval_seconds)
+
+# def say_hello(name):
+#     print("Hello", name)
+
+# schedule_task_at_interval(say_hello, 0.5, 4, "Osama")
+
+
+""" 90
+Design a decorator log_execution_flow(level=0) that prints entry/exit messages with indentation to visualize the call stack of nested functions.
+
+level=0 -> represents the indentation level — how deep this function is in the call stack.
+
+Each nested function call increases the level by 1.
+"""
+
+# def log_execution_flow(level=0):
+#     def decorator(func):
+#         def wrapper(*args, **kwargs):
+#             print("    " * level + f"Entering {func.__name__}")
+#             result = func(*args, **kwargs)
+#             print("    " * level + f"Exiting {func.__name__}")
+#             return result
+#         return wrapper
+#     return decorator
+
+# @log_execution_flow(level=0)
+# def a():
+#     b()
+
+# @log_execution_flow(level=1)
+# def b():
+#     print("Inside b")
+
+# a()
+
+
+
+""" 91
+
+Create a generator diff_sequences(seq1, seq2) that yields tuples indicating differences between two sequences (e.g., ('+', element), ('-', element), (' ', element)).
+"""
+
+# def diff_sequences(seq1, seq2):
+#     i, j = 0, 0
+#     while i < len(seq1) and j < len(seq2):
+#         if seq1[i] == seq2[j]:
+#             yield (' ', seq1[i])
+#             i += 1
+#             j += 1
+#         else:
+#             yield ('-', seq1[i])
+#             yield ('+', seq2[j])
+#             i += 1
+#             j += 1
+#     while i < len(seq1):
+#         yield ('-', seq1[i])
+#         i += 1
+#     while j < len(seq2):
+#         yield ('+', seq2[j])
+#         j += 1
+
+# for d in diff_sequences([1,2,3], [2,3,4]):
+#     print(d)
+
+
+""" 92
+Write a higher-order function transform_keys(dictionary, key_transform_func) that applies key_transform_func to all keys in a dictionary and returns a new dictionary.
+
+"""
+
+# def transform_keys(dictionary, key_transform_func):
+#     new_dict = {}
+#     for k, v in dictionary.items():
+#         new_key = key_transform_func(k)
+#         new_dict[new_key] = v
+#     return new_dict
+
+# d = {'a': 1, 'b': 2, 'c': 3}
+# new_d = transform_keys(d, lambda k: k.upper())
+# print(new_d)
+
+
+""" 93
+Write a function flatten_dict(nested_dict, separator='.') that flattens a nested dictionary into a single-level dictionary, using separator to join nested keys (e.g., {'a': {'b': 1}} becomes {'a.b': 1}).
+
+"""
+
+
+
+def flatten_dict(nested_dict, separator='.'):
+    flat = {}
+    def helper(d, prefix=''):
+        for k, v in d.items():
+            if isinstance(v, dict):
+                helper(v, prefix + k + separator)
+            else:
+                flat[prefix + k] = v
+    helper(nested_dict)
+    return flat
+
+data = {'a': {'b': 1, 'c': {'d': 2}}, 'e': 3}
+print(flatten_dict(data))
+
+
+
+
+
+""" 94
 
 Write a python code for sorting a list of version strings (e.g., "1.10.0", "1.2.1", "1.5").
 
@@ -2172,3 +2515,192 @@ Hint: You can do this by using the sorted()'s key="" parameter and define lambda
 # l_sorted = sorted(l, key=lambda v: [int(x) for x in v.split('.')])
 # print(l_sorted)
 
+
+
+
+
+""" 95
+
+Design a decorator read_only_attributes(*attrs) that prevents specified instance attributes from being modified after object initialization. Attempts to change them should raise an AttributeError.
+
+Example usage
+A User class stores sensitive information like id and email.
+By decorating it with @read_only_attributes("id", "email"), methods like update_email() or direct assignment (user.email = "new@example.com") will raise an AttributeError, preventing accidental changes to critical data.
+
+user = User(id=123, email="a@b.com")
+user.email = "x@y.com"  # Raises AttributeError
+
+"""
+
+
+
+# def read_only_attributes(*attrs):
+#     def decorator(cls):
+#         original_setattr = cls.__setattr__
+#         def new_setattr(self, name, value):
+#             if name in attrs and hasattr(self, name):
+#                 raise AttributeError(f"{name} is read-only")
+#             original_setattr(self, name, value)
+#         cls.__setattr__ = new_setattr
+#         return cls
+#     return decorator
+
+# @read_only_attributes("id", "email")
+# class User:
+#     def __init__(self, id, email):
+#         self.id = id
+#         self.email = email
+#         self.name = "Ashhad"
+
+# user = User(123, "a@b.com")
+# print(user.id, user.email)
+# user.name = "New Name"
+# print(user.name)
+# user.email = "x@y.com"
+
+
+
+
+
+
+
+
+
+
+
+
+""" 96
+Create a closure configurable_sorter(key_func=None, reverse=False) that returns a function. The returned function takes a list and sorts it using the configured key_func and reverse flag.
+"""
+
+# def configurable_sorter(key_func=None, reverse=False):
+#     def sort_list(lst):
+#         lst.sort(key=key_func, reverse=reverse)
+#         return lst
+#     return sort_list
+
+# sorter = configurable_sorter(key_func=len, reverse=True)
+# data = ["apple", "kiwi", "banana"]
+# print(sorter(data))
+
+
+
+
+
+
+""" 97
+
+Write a function parse_log_lines(log_lines) that takes a list of log strings in the format "LEVEL: message" and returns a list of dictionaries with "level" and "message" keys.
+"""
+
+# def parse_log_lines(log_lines):
+#     result = []
+#     for line in log_lines:
+#         level, message = line.split(": ", 1)
+#         result.append({"level": level, "message": message})
+#     return result
+
+
+# log_data = [
+#     "INFO: Application started",
+#     "WARNING: Low disk space",
+#     "ERROR: Uncaught exception"
+# ]
+
+# parsed_logs = parse_log_lines(log_data)
+# print(parsed_logs)
+
+""" 98
+
+Implement a higher-order function timed_callable_pool(pool_size, timeout_seconds) that returns a function. This returned function executes a given callable in a thread pool, raising a TimeoutError if it exceeds timeout_seconds.
+
+"""
+
+# import threading
+# import time
+
+# def timed_callable_pool(pool_size, timeout_seconds):
+#     def run_callable(func, *args, **kwargs):
+#         result = [None]
+#         def target():
+#             result[0] = func(*args, **kwargs)
+#         t = threading.Thread(target=target)
+#         t.start()
+#         t.join(timeout_seconds)
+#         if t.is_alive():
+#             raise TimeoutError("Function timed out")
+#         return result[0]
+#     return run_callable
+
+# def slow_add(a, b):
+#     time.sleep(2)
+#     return a + b
+
+# pool = timed_callable_pool(2, 1)
+
+
+
+
+
+""" 99
+
+Design a generator sliding_window(iterable, window_size) that yields a "sliding window" (a sub-list) of elements from the iterable, of the specified window_size.
+
+
+sliding_window(iterable, window_size) takes a sequence (iterable) and a number (window_size) and generates overlapping sub-lists (“windows”) of that size as it moves through the iterable.
+
+iterable → the input list or sequence to process
+
+window_size → the number of consecutive elements in each window
+
+"""
+
+
+
+# def sliding_window(iterable, window_size):
+#     for i in range(len(iterable) - window_size + 1):
+#         window = []
+#         for j in range(window_size):
+#             window.append(iterable[i + j])
+#         yield window
+
+# for w in sliding_window([1,2,3,4,5], 3):
+#     print(w)
+
+
+
+
+
+""" 100
+
+Create a function `simple_perceptron(weights, bias)` that returns a "neuron" function. This neuron function should take an `input_vector` (list of numbers), calculate the weighted sum plus bias, and return `1` if the result is non-negative, `0` otherwise (a simple step activation).
+
+Example Usage:
+# A neuron configured to act like an OR gate for binary inputs
+or_neuron = simple_perceptron(weights=[1, 1], bias=-0.5)
+
+print(or_neuron([0, 0])) # Expected: 0
+print(or_neuron([0, 1])) # Expected: 1
+print(or_neuron([1, 0])) # Expected: 1
+print(or_neuron([1, 1])) # Expected: 1
+
+"""
+
+
+def simple_perceptron(weights, bias):
+    def neuron(input_vector):
+        total = 0
+        for i in range(len(weights)):
+            total += weights[i] * input_vector[i]
+        total += bias
+        if total >= 0:
+            return 1
+        else:
+            return 0
+    return neuron
+
+or_neuron = simple_perceptron(weights=[1, 1], bias=-0.5)
+print(or_neuron([0, 0]))
+print(or_neuron([0, 1]))
+print(or_neuron([1, 0]))
+print(or_neuron([1, 1]))
