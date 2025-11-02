@@ -1342,16 +1342,16 @@ emitter.emit("greet", "Alice")
 """
 
 
-class EventEmitter():
+# class EventEmitter():
     
 
 
-emitter = EventEmitter()
-def greet(name): print(f"Hello, {name}!")
-def farewell(name): print(f"Goodbye, {name}!")
-emitter.on("greet", greet)
-emitter.on("farewell", farewell)
-emitter.emit("greet", "Alice")
+# emitter = EventEmitter()
+# def greet(name): print(f"Hello, {name}!")
+# def farewell(name): print(f"Goodbye, {name}!")
+# emitter.on("greet", greet)
+# emitter.on("farewell", farewell)
+# emitter.emit("greet", "Alice")
 
 
 
@@ -1717,3 +1717,458 @@ Create a decorator log_exceptions(logger_func) that catches any exception raised
 """63
 Write a function find_longest_common_prefix(strings) that takes a list of strings and returns their longest common prefix.
 """
+
+
+# def find_longest_common_prefix(strings):
+#     if not strings:
+#         return ""
+#     prefix = strings[0]
+#     for s in strings[1:]:
+#         while not s.startswith(prefix):
+#             prefix = prefix[:-1]
+#             if not prefix:
+#                 return ""
+#     return prefix
+
+# print(find_longest_common_prefix(["flower", "flow", "flight"]))
+# print(find_longest_common_prefix(["dog", "doracecar", "docardo"]))
+
+
+
+
+
+
+""" 63
+Implement a recursive function find_all_subsets(items) that returns a list of all possible subsets (including the empty set) of a given list of items.
+
+Imagine you have a list of items: ['A', 'B', 'C'].
+Final list of subsets would be:
+[], ['A'], ['B'], ['A', 'B'], ['C'], ['A', 'C'], ['B', 'C'], ['A', 'B', 'C'].
+
+"""
+
+
+# def find_all_subsets(items):
+#     if not items:
+#         return [[]]
+    
+#     first_item = items[0]
+#     subsets_of_rest = find_all_subsets(items[1:])
+#     all_subsets = []
+
+#     for subset in subsets_of_rest:
+#         all_subsets.append(subset)
+#         all_subsets.append([first_item] + subset)
+        
+#     return all_subsets
+
+# print(find_all_subsets([1, 2, 3]))
+
+
+
+""" 64
+
+Design a generator flatten_dict_values(nested_dict) that yields all non-dictionary values from a potentially deeply nested dictionary.
+
+Example
+Input
+
+{
+    'a': 1,
+    'b': {'x': 2, 'y': {'p': 3, 'q': {'r': 4}}},
+    'c': {'m': 5, 'n': 6}
+}
+
+
+OUTPUT:
+1, 2, 3, 4, 5, 6
+# """
+
+# def flatten_dict_values(nested_dict):
+#     for v in nested_dict.values():
+#         if isinstance(v, dict):
+#             print(v)
+#             print(next(flatten_dict_values(v)))
+#             yield from flatten_dict_values(v) # yield from is used when we have two generators
+#         else:
+#             yield(v)
+
+
+
+
+# nested_dict = {
+#     'a': 1,
+#     'b': {'x': "batman", 'y': {'p': 3, 'q': {'r': "4"}}},
+#     'c': {'m': 5, 'n': 6}
+# }
+
+
+# print(list(flatten_dict_values(nested_dict)))
+
+
+
+""" 65
+
+
+Write a higher-order function apply_multiple(value, *functions) that applies a list of functions to an initial value in sequence, passing the result of one to the next, and returns the final result.
+
+"""
+
+
+# def apply_multiple(value, *functions):
+#     for f in functions:
+#         value = f(value)
+#     return value
+
+# def add2(x): return x + 2
+# def mul3(x): return x * 3
+# def sub1(x): return x - 1
+
+# print(apply_multiple(5, add2, mul3, sub1))
+
+
+
+
+""" 66
+Implement a decorator context_aware_logger(context_key) that dynamically adds a context_key and its value (from a dictionary passed to the decorated function) to all log messages.
+
+"""
+
+# def context_aware_logger(context_key):
+#     def decorator(func):
+#         def wrapper(context, *args, **kwargs):
+#             def log(msg):
+#                 print(f"[{context_key}={context.get(context_key, 'N/A')}] {msg}")
+#             return func(context, log, *args, **kwargs)
+#         return wrapper
+#     return decorator
+
+# @context_aware_logger('user')
+# def process_data(context, log):
+#     log("Starting process")
+#     log("Processing done")
+
+# process_data({'user': 'Ashhad'})
+
+
+
+""" 66
+
+Create a closure event_rate_limiter(max_events_per_minute) that returns a function. This function, when called, allows an event to pass through only if the rate limit is not exceeded.
+Hint: A nonlocal variable is remembered in a closure function.
+"""
+# import time
+
+# def event_rate_limiter(max_events_per_minute):
+#     count = 0
+
+#     def function_run():
+#         nonlocal count
+#         if count >= max_events_per_minute:
+#             print(f"Function run {count} times")
+#             print("Function execution blocked")
+#         else:
+#             count += 1
+#             print(f"Function is running count = {count}")
+#             time.sleep(1)
+#             return count * 20
+
+#     return function_run
+
+
+# limited_func = event_rate_limiter(5)
+
+# for _ in range(7):
+#     result = limited_func()
+#     print(result)
+
+
+
+
+""" 67
+Create a generator pairwise(iterable) that yields successive overlapping pairs from an iterable (e.g., [1,2,3,4] -> (1,2), (2,3), (3,4)).
+
+# """
+
+
+# def pairwise(iterable):
+#     l = []
+#     for i in range(len(iterable)-1):
+#         diff = abs(iterable[i] - iterable[i+1])
+#         if diff == 1:
+#             yield iterable[i], iterable[i+1]
+
+
+
+# print(list(pairwise([1,2,3,4])))
+
+
+
+""" 68
+Implement a decorator ensure_positive_result that checks if the decorated function's return value is positive. If not, raise a ValueError.
+
+"""
+
+# def ensure_positive_result(func):
+#     def wrapper(*args, **kwargs):
+#         result = func(*args, **kwargs)
+#         if result <= 0:
+#             raise ValueError("Result is not positive")
+#         return result
+#     return wrapper
+
+# @ensure_positive_result
+# def subtract(a, b):
+#     return a - b
+
+# print(subtract(5, 3))
+# print(subtract(2, 5))
+
+""" 69
+
+Design a closure chained_callable(initial_value) that returns a function. The returned function can be called repeatedly (e.g., func(1)(2)(3)), adding to its internal state, and a final value() call returns the accumulated result.
+"""
+
+# def chained_callable(initial_value=0):
+#     total = initial_value
+#     def inner(x=None):
+#         nonlocal total
+#         if x is None:
+#             return total
+#         total += x
+#         return inner
+#     return inner
+
+# f = chained_callable(5)
+# print(f(1)(2)(3)(4)())  
+
+
+""" 70
+Create a generator random_walk_2d(start_x, start_y, steps) that yields the (x, y) coordinates of a 2D random walk for a given number of steps.
+
+"""
+
+# import random
+
+# def random_walk_2d(start_x, start_y, steps):
+#     x, y = start_x, start_y
+#     for _ in range(steps):
+#         dx, dy = random.choice([(1,0), (-1,0), (0,1), (0,-1)])
+#         x += dx
+#         y += dy
+#         yield (x, y)
+
+# for pos in random_walk_2d(0, 0, 5):
+#     print(pos)
+
+
+
+""" 71
+Write a higher-order function cache_to_disk(filepath) that returns a decorator. This decorator caches function results to a specified file, reloading them on subsequent runs.
+
+
+"""
+
+# import os
+# def cache_to_disk(filepath):
+#     def decorator(func):
+#         def wrapper(*args, **kwargs):
+#             result = func(*args, **kwargs)
+            
+#             if os.path.exists(filepath):
+#                 with open(filepath, "r") as file:
+#                     print("Loaded from cache.")
+#                     return file.read()
+            
+#             with open(filepath, "w") as file:
+#                 file.write(str(result))
+            
+#             return result
+#         return wrapper
+#     return decorator
+    
+
+# path = r".\hackerrank\text.txt"
+
+# @cache_to_disk(path)
+# def new_func():
+#     print("Running computation...")
+#     return 34*432
+
+# print(new_func())
+# print(new_func())
+
+
+
+""" 73
+Design a decorator validate_return_type(expected_type) that checks if the function's return value matches the expected_type.
+
+"""
+
+# def validate_return_type(expected_type):
+#     def decorator(func):
+#         def wrapper(*args, **kwargs):
+#             result = func(*args, **kwargs)
+#             if type(result) == expected_type:
+#                 print("Both types match")
+#                 return result
+#             else:
+#                 return "Sorry value types dont match"
+#         return wrapper
+#     return decorator
+    
+
+# integers = []
+
+# @validate_return_type(type(integers))
+# def func_for_something(input_data):
+#     if input_data == "String":
+#         return "This is a string value"
+#     elif input_data == "Int":
+#         return [123,321,5454]
+
+
+# print(func_for_something("Int"))
+# print(func_for_something("String")) # Should give "Sorry value types dont match"
+
+
+""" 74
+
+Create a closure configurable_data_formatter(format_string) that returns a function which formats data according to the format_string.
+"""
+
+# def configurable_data_formatter(format_string):
+#     def formatter(**data):
+#         return format_string.format(**data)
+#     return formatter
+
+# f = configurable_data_formatter("Name: {name}, Age: {age}")
+# print(f(name="Ashhad", age=21))
+
+""" 75
+
+Implement a generator interleave(*iterables) that yields elements from multiple iterables, one from each in turn, until all are exhausted.
+"""
+
+
+# def interleave(*iterables):
+#     iterators = [iter(it) for it in iterables]
+#     while iterators:
+#         new_iterators = []
+#         for it in iterators:
+#             try:
+#                 yield next(it)
+#                 new_iterators.append(it)
+#             except StopIteration:
+#                 pass
+#         iterators = new_iterators
+
+# print(list(interleave([1,2,3], ['a','b'], [True, False, None])))
+
+
+
+""" 76
+
+Design a decorator suppress_output that redirects stdout and stderr for the duration of the decorated function's execution, capturing or discarding it
+"""
+# import sys
+# import io
+
+# def suppress_output(func):
+#     def wrapper(*args, **kwargs):
+#         old_out, old_err = sys.stdout, sys.stderr
+#         sys.stdout = sys.stderr = io.StringIO()
+#         try:
+#             return func(*args, **kwargs)
+#         finally:
+#             sys.stdout, sys.stderr = old_out, old_err
+#     return wrapper
+
+# @suppress_output
+# def noisy_function():
+#     print("This will not be shown")
+#     raise Exception("This error will also be hidden")
+
+# noisy_function()
+
+
+
+""" 77
+Write a recursive function generate_permutations_with_repetitions(items, length) that generates all permutations of items of a specified length, allowing repetitions.
+"""
+
+# def generate_permutations_with_repetitions(items, length):
+#     if length == 0:
+#         return [[]]
+#     result = []
+#     for i in items:
+#         for p in generate_permutations_with_repetitions(items, length - 1):
+#             result.append([i] + p)
+#     return result
+
+# print(generate_permutations_with_repetitions([1, 2], 3))
+
+""" 78
+
+Implement a closure simple_middleware_pipeline(*middleware_functions) that returns a function. This function processes a request through a series of middleware_functions, each potentially modifying the request or stopping the pipeline.
+"""
+
+# def simple_middleware_pipeline(*middleware_functions):
+#     def pipeline(request):
+#         for m in middleware_functions:
+#             request = m(request)
+#             if request is None:
+#                 break
+#         return request
+#     return pipeline
+
+# def auth_middleware(req):
+#     if not req.get("user"):
+#         print("Unauthorized")
+#         return None
+#     return req
+
+# def log_middleware(req):
+#     print("Logging:", req)
+#     return req
+
+# def data_middleware(req):
+#     req["data"] = "Processed"
+#     return req
+
+# pipe = simple_middleware_pipeline(auth_middleware, log_middleware, data_middleware)
+# print(pipe({"user": "Ashhad"}))
+# print(pipe({}))
+
+""" 79
+Implement a recursive function count_occurrences_in_nested_list(item, nested_list) that counts how many times item appears in a potentially deeply nested list.
+"""
+
+# def count_occurrences_in_nested_list(item, nested_list):
+#     count = 0
+#     for element in nested_list:
+#         if isinstance(element, list):
+#             count += count_occurrences_in_nested_list(item, element)
+#         else:
+#             if element == item:
+#                 count += 1
+#     return count
+
+
+
+# nested_list = [1, [2, 3, [1, 4, 1]], [1, 2, [1, [1]]]]
+# print(count_occurrences_in_nested_list(1, nested_list))
+
+
+""" 
+
+Write a python code for sorting a list of version strings (e.g., "1.10.0", "1.2.1", "1.5").
+
+Hint: You can do this by using the sorted()'s key="" parameter and define lambda funtion in it 
+"""
+
+# l = ["1.10.0", "1.2.1", "1.5"]
+
+# l_sorted = sorted(l, key=lambda v: [int(x) for x in v.split('.')])
+# print(l_sorted)
+
