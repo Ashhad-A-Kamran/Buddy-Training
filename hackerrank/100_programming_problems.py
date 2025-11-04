@@ -1,18 +1,3 @@
-# l = [lambda args=x: x*10 for x in range(1,5)]
-
-
-# for i in l:
-#     print(i)
-
-
-
-# def l(x=10):
-#    return x*10
-
-# for i in range(1,5):
-#     print(l())
-
-
 """ 1 sir
 Build a calculator() that returns nested functions for add,subtract, multiply, and divide. 
 
@@ -22,33 +7,33 @@ validate Division by zero
 """
 
 
-# def calculator():
-#     def add(a,b):
-#         return a+b
+def calculator():
+    def add(a,b):
+        return a+b
     
-#     def subtract(a,b):
-#         return a-b
+    def subtract(a,b):
+        return a-b
 
-#     def multiply(a,b):
-#         return a*b
+    def multiply(a,b):
+        return a*b
 
-#     def divide(a,b):
-#         return a/b
+    def divide(a,b):
+        return a/b
     
-#     return [add, subtract, multiply, divide]
+    return [add, subtract, multiply, divide]
 
 
-# func = calculator()
+func = calculator()
 
-# add = func[0]
-# subtract = func[1]
-# multiply = func[2]
-# divide = func[3]
+add = func[0]
+subtract = func[1]
+multiply = func[2]
+divide = func[3]
 
-# print(add(2,3))
-# print(subtract(55,40))
-# print(divide(50,10.5))
-# print(multiply(4.3,2))
+print(add(2,3))
+print(subtract(55,40))
+print(divide(50,10.5))
+print(multiply(4.3,2))
 
  
 """ 2 sir
@@ -58,43 +43,43 @@ Include input validation for type and value
 
 """
 
-# def prime_upto(n):
-#     if isinstance(n, int) and n<100:
+def prime_upto(n):
+    if isinstance(n, int) and n<100:
 
-#         primes = []
-#         for i in range(2, n+1):
-#             for j in range(2,i):
-#                 if i%j==0:
-#                     break
-#             else:
-#                 primes.append(i)
-#     else:
-#         print("Please provide an integer and less than 100")
-#         return []         
-#     return primes
+        primes = []
+        for i in range(2, n+1):
+            for j in range(2,i):
+                if i%j==0:
+                    break
+            else:
+                primes.append(i)
+    else:
+        print("Please provide an integer and less than 100")
+        return []         
+    return primes
 
-# print(prime_upto(21))
-
-
-# def prime_upto(n):
-#     # Input validation
-#     if not isinstance(n, int) or n < 2:
-#         print("Please enter a positive integer greater than 1.")
-#         return []
-
-#     primes = []
-#     for i in range(2, n + 1):
-#         for j in range(2, int(i ** 0.5) + 1):  # check up to sqrt(i)
-#             if i % j == 0:
-#                 break
-#         else:
-#             primes.append(i)  # only executed if no divisor found
-
-#     return primes
+print(prime_upto(21))
 
 
-# # Example usage:
-# print(prime_upto(21))
+def prime_upto(n):
+    # Input validation
+    if not isinstance(n, int) or n < 2:
+        print("Please enter a positive integer greater than 1.")
+        return []
+
+    primes = []
+    for i in range(2, n + 1):
+        for j in range(2, int(i ** 0.5) + 1):  # check up to sqrt(i)
+            if i % j == 0:
+                break
+        else:
+            primes.append(i)  # only executed if no divisor found
+
+    return primes
+
+
+# Example usage:
+print(prime_upto(21))
 
 
 
@@ -105,18 +90,18 @@ Write a function that accepts a list of numbers and returns a dictionary of tota
 
 """
 
-# def enter_nums(l):
-#     dict1 = {
-#         "total" : sum(l),
-#         "average": sum(l)/len(l),
-#         "max": max(l),
-#         "min": min(l),
-#         "even numbers": [i for i in l if i%2==0]
-#     }
+def enter_nums(l):
+    dict1 = {
+        "total" : sum(l),
+        "average": sum(l)/len(l),
+        "max": max(l),
+        "min": min(l),
+        "even numbers": [i for i in l if i%2==0]
+    }
 
-#     return dict1
+    return dict1
 
-# print(enter_nums([44,33,22,55,66,77,98]))
+print(enter_nums([44,33,22,55,66,77,98]))
 
 
 
@@ -126,32 +111,32 @@ Generator from Dictionary keys/ values write two generators
     - dict_values() yields values
 """
 
-# def dict_keys(data):
-#     for key,values in data.items():
-#         yield key
+def dict_keys(data):
+    for key,values in data.items():
+        yield key
 
 
 
-# def dict_values(data):
-#     for key,values in data.items():
-#         yield values
+def dict_values(data):
+    for key,values in data.items():
+        yield values
 
 
-# dict_for_k_v = {"name": "Ashhad Ashhad",
-#                 "last_name": "Kamran",
-#                 "age": 2,
-#                 "sex": "M",
-#                 }
+dict_for_k_v = {"name": "Ashhad Ashhad",
+                "last_name": "Kamran",
+                "age": 2,
+                "sex": "M",
+                }
 
-# keys_gen = dict_keys(dict_for_k_v)
-# values_gen = dict_values(dict_for_k_v)
+keys_gen = dict_keys(dict_for_k_v)
+values_gen = dict_values(dict_for_k_v)
 
-# print(next(keys_gen))
-# print(next(values_gen))
+print(next(keys_gen))
+print(next(values_gen))
 
-# print(next(keys_gen))
-# print(next(keys_gen))
-# print(next(keys_gen))
+print(next(keys_gen))
+print(next(keys_gen))
+print(next(keys_gen))
 
 
 
@@ -160,20 +145,20 @@ Generator from Dictionary keys/ values write two generators
 You are given a string and your task is to swap cases. In other words, convert all lowercase letters to uppercase letters and vice versa.
 """
 
-# def swap_case(s):
-#     new_string=""
-#     for i in s:
-#         if i.isupper():
-#             new_string += i.lower()
-#         elif i.islower():
-#             new_string += i.upper()
-#         else:
-#             new_string += i
-#     return new_string
+def swap_case(s):
+    new_string=""
+    for i in s:
+        if i.isupper():
+            new_string += i.lower()
+        elif i.islower():
+            new_string += i.upper()
+        else:
+            new_string += i
+    return new_string
 
-# s = input("Input text: ")
-# result = swap_case(s)
-# print(result)
+s = input("Input text: ")
+result = swap_case(s)
+print(result)
 
 
 
@@ -185,12 +170,12 @@ Hello firstname lastname! You just delved into python.
 """
 
 
-# def print_full_name(first, last):
-#     print(f"Hello {first} {last}! You just delved into python.")
+def print_full_name(first, last):
+    print(f"Hello {first} {last}! You just delved into python.")
 
-# first_name = input()
-# last_name = input()
-# print_full_name(first_name, last_name)
+first_name = input()
+last_name = input()
+print_full_name(first_name, last_name)
 
 
 
@@ -200,24 +185,24 @@ Hello firstname lastname! You just delved into python.
 Let's use decorators to build a name directory! You are given some information about  people. Each person has a first name, last name, age and sex. Print their names in a specific format sorted by their age in ascending order i.e. the youngest person's name should be printed first. For two people of the same age, print them in the order of their input.
 """
 
-# import operator
+import operator
 
-# def person_lister(f):
-#     def inner(people):
-#         print("People: ", people)
-#         list_sorted = sorted(people, key= lambda x: int(x[2]))
-#         print("list_sorted: ", list_sorted)
+def person_lister(f):
+    def inner(people):
+        print("People: ", people)
+        list_sorted = sorted(people, key= lambda x: int(x[2]))
+        print("list_sorted: ", list_sorted)
         
-#         return [f(person) for person in list_sorted]
-#     return inner
+        return [f(person) for person in list_sorted]
+    return inner
 
-# @person_lister # name_format = person_lister(name_format)
-# def name_format(person):
-#     return ("Mr. " if person[3] == "M" else "Ms. ") + person[0] + " " + person[1]
+@person_lister # name_format = person_lister(name_format)
+def name_format(person):
+    return ("Mr. " if person[3] == "M" else "Ms. ") + person[0] + " " + person[1]
 
-# people = [input().split() for i in range(int(input()))]
+people = [input().split() for i in range(int(input()))]
 
-# print(*name_format(people), sep='\n')
+print(*name_format(people), sep='\n')
 
 
 
@@ -249,25 +234,25 @@ Use function composition — your higher-order function returns another function
 """
 
 
-# def data_pipeline(func_list):
-#     def apply_func(x):
-#         for func in func_list:
-#             print("Before applying function: ", x)
-#             print(func)
-#             x = func(x)
-#             print("\nAfter applying function: ", x)
-#         return x
-#     return apply_func
+def data_pipeline(func_list):
+    def apply_func(x):
+        for func in func_list:
+            print("Before applying function: ", x)
+            print(func)
+            x = func(x)
+            print("\nAfter applying function: ", x)
+        return x
+    return apply_func
 
 
 
-# def double(x): return x * 2
-# def add_three(x): return x + 3
-# def square(x): return x ** 2
+def double(x): return x * 2
+def add_three(x): return x + 3
+def square(x): return x ** 2
 
 
-# pipeline = data_pipeline([double, add_three, square])
-# print(pipeline(2))
+pipeline = data_pipeline([double, add_three, square])
+print(pipeline(2))
 
 
 
@@ -297,21 +282,21 @@ Hint:
 Use time.sleep() to simulate delay and then call the callback function.
 """
 
-# import time
+import time
 
-# def fetch_data(callback):
-#     print("Fetching data...")
+def fetch_data(callback):
+    print("Fetching data...")
         
-#     print("Data fetched successfully.")
-#     print(callback())
+    print("Data fetched successfully.")
+    print(callback())
 
 
 
-# def callback():
-#     return {'status': 'success', 'data': [1,2,3]}
+def callback():
+    return {'status': 'success', 'data': [1,2,3]}
 
 
-# fetch_data(callback)
+fetch_data(callback)
 
 
 
@@ -343,32 +328,32 @@ Use nonlocal to modify a variable inside nested functions.
 """
 
 
-# def make_counter(start):
-#     state = start
-#     def increment():
-#         nonlocal state
-#         state += 1
-#         return state
+def make_counter(start):
+    state = start
+    def increment():
+        nonlocal state
+        state += 1
+        return state
     
-#     def decrement():
-#         nonlocal state
-#         state -= 1
-#         return state 
+    def decrement():
+        nonlocal state
+        state -= 1
+        return state 
     
-#     return [increment, decrement]
+    return [increment, decrement]
 
-# counter1 = make_counter(10)
-# counter2 = make_counter(0)
+counter1 = make_counter(10)
+counter2 = make_counter(0)
 
-# # plus 1
-# print(counter1[0]())
-# print(counter1[0]())
-# print(counter1[0]())
-# print(counter1[0]())  
+# plus 1
+print(counter1[0]())
+print(counter1[0]())
+print(counter1[0]())
+print(counter1[0]())  
 
-# # minus 1
-# print(counter1[1]())
-# print(counter1[1]())
+# minus 1
+print(counter1[1]())
+print(counter1[1]())
 
 
 
@@ -389,28 +374,28 @@ Hint:
 Use time.time() before and after the function call.
 """
 
-# import time
-# def time_logger(func):
-#     def wrapper(*args, **kwargs):
-#         start= time.time()
-#         func(*args, **kwargs)
-#         end= time.time()
-#         print(f"{func.__name__} execution took {round(end - start, 5)} seconds")
-#         return func
-#     return wrapper
+import time
+def time_logger(func):
+    def wrapper(*args, **kwargs):
+        start= time.time()
+        func(*args, **kwargs)
+        end= time.time()
+        print(f"{func.__name__} execution took {round(end - start, 5)} seconds")
+        return func
+    return wrapper
 
-# @time_logger
-# def multiply():
-#     (5000000999001233322*5)**2
+@time_logger
+def multiply():
+    (5000000999001233322*5)**2
 
 
-# @time_logger
-# def looper():
-#     for i in range(0,10001):
-#         i+=1
+@time_logger
+def looper():
+    for i in range(0,10001):
+        i+=1
 
-# multiply()
-# looper()
+multiply()
+looper()
     
 
 
@@ -429,12 +414,12 @@ print(triple(5))   # 15
 """
 
 
-# def make_multiplier(factor):
-#     f = lambda x: x*factor
-#     return f
+def make_multiplier(factor):
+    f = lambda x: x*factor
+    return f
 
-# print(
-# make_multiplier(4)(6))
+print(
+make_multiplier(4)(6))
 
 
 
@@ -450,28 +435,28 @@ The callback should simply print the duration.
 """
 
 
-# import time
+import time
 
-# def timer(func):
-#     def wrapper(*args, **kwargs):
-#         start_time = time.time()
-#         func(*args, **kwargs)
-#         end_time = time.time()
-#         time_taken = end_time - start_time
-#         print(time_taken)
-#         callback(time_taken)
-#         return time_taken
-#     return wrapper
+def timer(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        func(*args, **kwargs)
+        end_time = time.time()
+        time_taken = end_time - start_time
+        print(time_taken)
+        callback(time_taken)
+        return time_taken
+    return wrapper
 
-# def callback(get_time):
-#     print(f"Time taken: {get_time}")
+def callback(get_time):
+    print(f"Time taken: {get_time}")
 
-# @timer #slow_function = timer(slow_function)
-# def slow_function():
-#     time.sleep(2)
-#     print("Execution Done")
+@timer #slow_function = timer(slow_function)
+def slow_function():
+    time.sleep(2)
+    print("Execution Done")
 
-# slow_function()
+slow_function()
 
 
 """ 14. Chatgpt
@@ -486,23 +471,23 @@ gen = power_sequence(2)
 print(get_first_n(gen, 5))  # [2, 4, 8, 16, 32]
 """
 
-# def power_sequence(base):
-#     power = base
-#     while True:
-#         yield power
-#         power *= base
+def power_sequence(base):
+    power = base
+    while True:
+        yield power
+        power *= base
 
 
-# def get_first_n(generator_func, n):
-#     l = []
-#     for _ in range(n):
-#         l.append(next(generator_func))
-#     return l
+def get_first_n(generator_func, n):
+    l = []
+    for _ in range(n):
+        l.append(next(generator_func))
+    return l
 
-# gen = power_sequence(3)
+gen = power_sequence(3)
 
 
-# print(get_first_n(gen, 5))
+print(get_first_n(gen, 5))
 
 
 
@@ -531,31 +516,31 @@ bye()    # prints nothing
 
 
 
-# def run_if(condition):
-#     def decorator(func):
-#         def wrapper(*args, **kwargs):
-#             if condition:
-#                 result = func(*args,**kwargs)
-#                 return result
-#             else:
-#                 print("Function not run, condition is False")
-#         return wrapper
-#     return decorator
+def run_if(condition):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            if condition:
+                result = func(*args,**kwargs)
+                return result
+            else:
+                print("Function not run, condition is False")
+        return wrapper
+    return decorator
 
-# should_run = lambda: True
-# should_not_run = lambda: False
+should_run = lambda: True
+should_not_run = lambda: False
 
 
-# @run_if(should_run)
-# def hello():
-#     print("Hello function run")
+@run_if(should_run)
+def hello():
+    print("Hello function run")
 
-# @run_if(should_not_run)
-# def bye():
-#     print("Byw function run!")
+@run_if(should_not_run)
+def bye():
+    print("Byw function run!")
 
-# hello()
-# bye()
+hello()
+bye()
 
 
 
@@ -593,23 +578,23 @@ Enter number or 'stop': stop
 
 
 
-# def stream_numbers():
-#     while True:
-#         n = input("Enter number or 'stop': ")
-#         if n == "stop":
-#             break
-#         yield int(n)
+def stream_numbers():
+    while True:
+        n = input("Enter number or 'stop': ")
+        if n == "stop":
+            break
+        yield int(n)
 
 
-# def process_stream(generator, callback):
-#     for number in generator:
-#         callback(number)
+def process_stream(generator, callback):
+    for number in generator:
+        callback(number)
     
 
-# def print_double(x):
-#     print(x * 2)
+def print_double(x):
+    print(x * 2)
 
-# print(process_stream(stream_numbers(), print_double))
+print(process_stream(stream_numbers(), print_double))
 
 
 
@@ -621,11 +606,11 @@ Functions, Arguments, Higher-Order Functions
 Write a function that demonstrates all types of arguments: positional, keyword, default, and *args, **kwargs.
 """
 
-# def func(p,*args, keyword="some keyword", **kwargs):
-#     print(p,args, keyword, kwargs, sep="\n")
+def func(p,*args, keyword="some keyword", **kwargs):
+    print(p,args, keyword, kwargs, sep="\n")
 
 
-# func(33, [22,11,44], some="keyword")
+func(33, [22,11,44], some="keyword")
 
 
 
@@ -634,13 +619,13 @@ Write a function that demonstrates all types of arguments: positional, keyword, 
 Create a function that returns another function which adds a fixed number to its input (closure)."""
 
 
-# def take_func(func):
-#     return func()+4
+def take_func(func):
+    return func()+4
 
-# def base_func():
-#     return 5
+def base_func():
+    return 5
 
-# print(take_func(base_func))
+print(take_func(base_func))
 
 
 
@@ -651,38 +636,35 @@ Store multiple arithmetic functions (add, sub, mul) inside a dictionary and call
 
 
 
-# def call_func(dict1):
+def call_func(dict1):
     
-#     while True:
-#         inp = input("Choose: add, sub, mul, div or exit").strip().lower()
-#         if inp == "exit":
-#             break
+    while True:
+        inp = input("Choose: add, sub, mul, div or exit").strip().lower()
+        if inp == "exit":
+            break
         
-#         try:
-#             x, y = map(float, input("Enter two numbers separated by space: ").split())
-#             print("Result:", func_dict[inp](x, y))
-#         except ZeroDivisionError:
-#             print("Cannot divide by zero")
-#         except ValueError:
-#             print("Please enter valid values")
-#         except KeyError:
-#             print("You typed a number while entering function name")
+        try:
+            x, y = map(float, input("Enter two numbers separated by space: ").split())
+            print("Result:", func_dict[inp](x, y))
+        except ZeroDivisionError:
+            print("Cannot divide by zero")
+        except ValueError:
+            print("Please enter valid values")
+        except KeyError:
+            print("You typed a number while entering function name")
 
+add = lambda x,y: x+y
+sub = lambda x,y: x-y
+mul = lambda x,y: x*y
+div = lambda x,y: x/y
 
+func_dict = {
+    "add": add, 
+    "sub": sub, 
+    "mul": mul, 
+    "div": div}
 
-
-# add = lambda x,y: x+y
-# sub = lambda x,y: x-y
-# mul = lambda x,y: x*y
-# div = lambda x,y: x/y
-
-# func_dict = {
-#     "add": add, 
-#     "sub": sub, 
-#     "mul": mul, 
-#     "div": div}
-
-# call_func(func_dict)
+call_func(func_dict)
 
 
 
@@ -691,15 +673,15 @@ Store multiple arithmetic functions (add, sub, mul) inside a dictionary and call
 Write a function that accepts another function as a parameter and calls it twice.
 """
 
-# def calling(calls):
-#     calls()
-#     calls()
+def calling(calls):
+    calls()
+    calls()
 
-# def function_to_be_called():
-#     print("im a functions")
+def function_to_be_called():
+    print("im a functions")
 
 
-# calling(function_to_be_called)
+calling(function_to_be_called)
 
 
 
@@ -707,10 +689,25 @@ Write a function that accepts another function as a parameter and calls it twice
 Create a function that returns multiple functions from within it and call each one individually.
 """
 
+def create_functions():
+    def greet():
+        print("Hello!")
 
-# def returns(l):
+    def bye():
+        print("Goodbye!")
 
-#     return 
+    def thank():
+        print("Thank you!")
+
+    return greet, bye, thank
+
+
+greet_func, bye_func, thank_func = create_functions()
+
+greet_func()
+bye_func()
+thank_func()
+
 
 
 
@@ -721,22 +718,22 @@ Create a function that returns multiple functions from within it and call each o
 Write a function that takes a function and a list, applies the function to each element, and returns the modified list (custom map).
 """
 
-# def custom_map(func, l):
-#     result = []
-#     for i in l:
-#         func_output = func(i)
-#         result.append(func_output)
-#     print(result)
-#     return result
+def custom_map(func, l):
+    result = []
+    for i in l:
+        func_output = func(i)
+        result.append(func_output)
+    print(result)
+    return result
 
 
-# l = [2,3,4,5,6]
+l = [2,3,4,5,6]
 
-# def addon(n):
-#     return n*2
+def addon(n):
+    return n*2
 
 
-# custom_map(addon, l)
+custom_map(addon, l)
 
 
 
@@ -746,14 +743,14 @@ Nested Functions, Closures, Decorators, Callbacks
 Create a closure that takes an exponent n and returns a function that raises a number to that power."""
 
 
-# def func(exp):
-#     def mult(num):
-#         return num ** exp
-#     return mult
+def func(exp):
+    def mult(num):
+        return num ** exp
+    return mult
 
-# call_func = func(3)
+call_func = func(3)
 
-# print(call_func(5))
+print(call_func(5))
 
 
 
@@ -762,38 +759,38 @@ Create a closure that takes an exponent n and returns a function that raises a n
 Write a decorator that prints the name of the function before executing it.
 """
 
-# def show_name(func):
-#     def wrapper(*args, **kwargs):
-#         print("Running:", func.__name__)
-#         return func(*args, **kwargs)
-#     return wrapper
+def show_name(func):
+    def wrapper(*args, **kwargs):
+        print("Running:", func.__name__)
+        return func(*args, **kwargs)
+    return wrapper
 
-# @show_name
-# def greet():
-#     print("Hello")
+@show_name
+def greet():
+    print("Hello")
 
-# greet()
+greet()
 
 
 """ 25 Chatgpt
 Write a decorator that counts how many times a function has been called."""
 
 
-# def count_calls(func):
-#     count = 0
-#     def wrapper(*args, **kwargs):
-#         nonlocal count
-#         count += 1
-#         print(f"{func.__name__} called {count} times")
-#         return func(*args, **kwargs)
-#     return wrapper
+def count_calls(func):
+    count = 0
+    def wrapper(*args, **kwargs):
+        nonlocal count
+        count += 1
+        print(f"{func.__name__} called {count} times")
+        return func(*args, **kwargs)
+    return wrapper
 
-# @count_calls
-# def hello():
-#     print("Hello!")
+@count_calls
+def hello():
+    print("Hello!")
 
-# hello()
-# hello()
+hello()
+hello()
 
 
 
@@ -804,18 +801,18 @@ Write a decorator that logs all function calls to a text file.
 """
 
 
-# def log_to_file(func):
-#     def wrapper(*args, **kwargs):
-#         with open("log.txt", "a") as f:
-#             f.write(f"Called {func.__name__}\n")
-#         return func(*args, **kwargs)
-#     return wrapper
+def log_to_file(func):
+    def wrapper(*args, **kwargs):
+        with open("log.txt", "a") as f:
+            f.write(f"Called {func.__name__}\n")
+        return func(*args, **kwargs)
+    return wrapper
 
-# @log_to_file
-# def test():
-#     print("Function executed")
+@log_to_file
+def test():
+    print("Function executed")
 
-# test()
+test()
 
 
 
@@ -824,23 +821,37 @@ Write a callback function that runs after a simulated download is complete.
 """
 
 
-# import time
+import time
 
-# def download(callback):
-#     print("Downloading...")
-#     time.sleep(1)
-#     callback("Download complete!")
+def download(callback):
+    print("Downloading...")
+    time.sleep(1)
+    callback("Download complete!")
 
-# def notify(msg):
-#     print("Callback:", msg)
+def notify(msg):
+    print("Callback:", msg)
 
-# download(notify)
+download(notify)
 
 
 
 """ 28 Chatgpt
 Write a program where one function takes another function as an argument and executes it only if a condition is True.
 """
+def execute_if_true(condition, func):
+    if condition:
+        func()
+    else:
+        print("Condition was False, function not executed")
+
+def say_hello():
+    print("Hello, world!")
+
+def say_bye():
+    print("Goodbye!")
+
+execute_if_true(True, say_hello)
+execute_if_true(False, say_bye)
 
 
 
@@ -852,17 +863,17 @@ Implement a fallback decorator that returns a default value if the main function
 """
 
 
-# def fallback(default_value):
-#     def decorator(func):
-#         def wrapper(*args, **kwargs):
-#             try:
-#                 return func(*args, **kwargs)
-#             except Exception:
-#                 return default_value
-#         return wrapper
-#     return decorator
+def fallback(default_value):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            try:
+                return func(*args, **kwargs)
+            except Exception:
+                return default_value
+        return wrapper
+    return decorator
 
-# @fallback(default_value="Default Result")
+@fallback(default_value="Default Result")
 
 # We can write above as follows 
 # hold_result = fallback(value)
@@ -870,30 +881,30 @@ Implement a fallback decorator that returns a default value if the main function
 # some_other = hold_result(risky_divide)
 
 
-# def risky_divide(a, b):
-#     return a / b
+def risky_divide(a, b):
+    return a / b
 
-# print(risky_divide(10, 0))
+print(risky_divide(10, 0))
 
 """ 30 Chatgpt
 Write a function with nested scopes that uses both global and nonlocal keywords to modify variables at different levels.
 """
 
-# x = 5 
+x = 5 
 
-# def outer():
-#     y = 10
-#     def inner():
-#         nonlocal y
-#         global x
-#         y += 1
-#         x += 1
-#         print("Inner y:", y, "Global x:", x)
-#     inner()
-#     print("Outer y:", y)
+def outer():
+    y = 10
+    def inner():
+        nonlocal y
+        global x
+        y += 1
+        x += 1
+        print("Inner y:", y, "Global x:", x)
+    inner()
+    print("Outer y:", y)
 
-# outer()
-# print("Global x:", x)
+outer()
+print("Global x:", x)
 
 
 
@@ -902,18 +913,18 @@ Write a function with nested scopes that uses both global and nonlocal keywords 
 Write a decorator that takes parameters (for example, a unit of time) and modifies the output message.
 """
 
-# def modify(func):
-#     def wrapper(*args, **kwargs):
-#         func(*args, **kwargs)
-#         return func
-#     return wrapper
+def modify(func):
+    def wrapper(*args, **kwargs):
+        func(*args, **kwargs)
+        return func
+    return wrapper
 
 
-# @modify
-# def give_time(tyme):
-#     print("This is the time: ", tyme)
+@modify
+def give_time(tyme):
+    print("This is the time: ", tyme)
 
-# give_time(10)
+give_time(10)
 
 
 
@@ -922,21 +933,21 @@ Write a decorator that takes parameters (for example, a unit of time) and modifi
 Write a function that takes multiple callbacks and executes them in sequence after a simulated event.
 """
 
-# def calls(callback_1, callback_2):
-#     give_true = lambda x: True
-#     give_false = lambda y: False
+def calls(callback_1, callback_2):
+    give_true = lambda x: True
+    give_false = lambda y: False
 
-#     if give_true(None):
-#         callback_1()
-#     if give_false(None) == False:
-#         callback_2()
-
-
-# def print_callback(): print("Callback 1 called: ")
-# def multiply_callback(): print("callback 2 called: ", 55*33)
+    if give_true(None):
+        callback_1()
+    if give_false(None) == False:
+        callback_2()
 
 
-# calls(print_callback, multiply_callback)
+def print_callback(): print("Callback 1 called: ")
+def multiply_callback(): print("callback 2 called: ", 55*33)
+
+
+calls(print_callback, multiply_callback)
 
 
 
@@ -948,28 +959,28 @@ Write a decorator that caches the results of a function (simple memoization).
 ### Memoization means to store result and use the value again if same value occurs, so it does not need to compute again
 
 
-# def memoize(func):
-#     cache = {}
-#     def wrapper(*args):
-#         if args in cache:
-#             print("Cache", cache)
-#             print("Args: ", args)
-#             print("If block started")
-#             return cache[args]
-#         result = func(*args)
-#         cache[args] = result
-#         return result
-#     return wrapper
+def memoize(func):
+    cache = {}
+    def wrapper(*args):
+        if args in cache:
+            print("Cache", cache)
+            print("Args: ", args)
+            print("If block started")
+            return cache[args]
+        result = func(*args)
+        cache[args] = result
+        return result
+    return wrapper
 
-# @memoize
-# def fibonacci(n):
-#     if n <= 1:
-#         return n
-#     result = fibonacci(n-1) + fibonacci(n-2)
-#     print("Fib number result", result)
-#     return result
+@memoize
+def fibonacci(n):
+    if n <= 1:
+        return n
+    result = fibonacci(n-1) + fibonacci(n-2)
+    print("Fib number result", result)
+    return result
 
-# print("Fibonaccis: ", fibonacci(10))
+print("Fibonaccis: ", fibonacci(10))
 
 
 
@@ -980,36 +991,36 @@ Matrix Multiplication via List Comprehensions
 Write a Python function that performs matrix multiplication using list comprehensions."""
 
 
-# def mat_mul(l:list, m:list):
-#     n = [i*j for i in l for j in m]
-#     print(n)
-#     return n
+def mat_mul(l:list, m:list):
+    n = [i*j for i in l for j in m]
+    print(n)
+    return n
 
 
-# mat_mul([[2,3],[7,2]], [[3,4], [3,4]])
+mat_mul([[2,3],[7,2]], [[3,4], [3,4]])
 
 # Matrix is row x column
 
-# mat_a = list(map(int, input("Matrix A size: ").split()))
-# mat_b = list(map(int, input("Matrix B size: ").split()))
+mat_a = list(map(int, input("Matrix A size: ").split()))
+mat_b = list(map(int, input("Matrix B size: ").split()))
 
-# rows_a, cols_a = mat_a
-# rows_b, cols_b = mat_b
+rows_a, cols_a = mat_a
+rows_b, cols_b = mat_b
 
-# if cols_a != rows_b:
-#     print("NOT Possible: Multiplication requires columns a equal to rows of b")
+if cols_a != rows_b:
+    print("NOT Possible: Multiplication requires columns a equal to rows of b")
 
-# mat_A = [[2,3],
-#          [4,5]]
+mat_A = [[2,3],
+         [4,5]]
 
-# mat_B = [[4,5],
-#          [2,3]]
+mat_B = [[4,5],
+         [2,3]]
 
 
 
-# for i in range(0,len(mat_A[0])+1):
-#     for j in mat_B[0]:
-#         mat_A[i]
+for i in range(0,len(mat_A[0])+1):
+    for j in mat_B[0]:
+        mat_A[i]
 
 
 
@@ -1025,13 +1036,13 @@ After extracting strings of specified length from the said list:
 ['practice', 'solution']"""
 
 
-# l = ['Python', 'list', 'exercises', 'practice', 'solution']
+l = ['Python', 'list', 'exercises', 'practice', 'solution']
 
-# length = int(input("length of string to extract: "))
+length = int(input("length of string to extract: "))
 
-# new_list = [i for i in l if len(i) == length]
+new_list = [i for i in l if len(i) == length]
 
-# print("Extracted strings: \n", new_list)
+print("Extracted strings: \n", new_list)
 
 
 
@@ -1044,19 +1055,19 @@ Number of floats in the said mixed list:
 3
 """
 
-# new_l = [input("Enter input:") for i in range(int(input("no of inputs: ")))]
+new_l = [input("Enter input:") for i in range(int(input("no of inputs: ")))]
 
-# for i in range(len(new_l)):
-#     try:
-#         new_l[i] = float(new_l[i])
-#         if new_l[i].is_integer():
-#             new_l[i] = int(new_l[i])
-#     except ValueError:
-#         pass
+for i in range(len(new_l)):
+    try:
+        new_l[i] = float(new_l[i])
+        if new_l[i].is_integer():
+            new_l[i] = int(new_l[i])
+    except ValueError:
+        pass
 
-# filtered_list = list(filter(lambda x: isinstance(x, float), new_l))
+filtered_list = list(filter(lambda x: isinstance(x, float), new_l))
 
-# print(len(filtered_list))
+print(len(filtered_list))
 
 
 """ 37 Max/Min Tuple in List Lambda
@@ -1069,11 +1080,11 @@ Maximum and minimum values of the said list of tuples:
 (74, 62)
 """
 
-# orig_tuple = [('V', 62), ('VI', 68), ('VII', 72), ('VIII', 70), ('IX', 74), ('X', 65)]
+orig_tuple = [('V', 62), ('VI', 68), ('VII', 72), ('VIII', 70), ('IX', 74), ('X', 65)]
 
-# new_tuple = sorted(orig_tuple, key = lambda x:x[1])
+new_tuple = sorted(orig_tuple, key = lambda x:x[1])
 
-# print(f"Maximum:{new_tuple[-1][1]}, Minimum: {new_tuple[0][1]}")
+print(f"Maximum:{new_tuple[-1][1]}, Minimum: {new_tuple[0][1]}")
 
 
 
@@ -1088,10 +1099,10 @@ Remove None value from the said list:
 """
 
 
-# prev_list = [12, 0, None, 23, None, -55, 234, 89, None, 0, 6, -12]
-# newlist = list(filter(lambda x: x is not None, prev_list))
+prev_list = [12, 0, None, 23, None, -55, 234, 89, None, 0, 6, -12]
+newlist = list(filter(lambda x: x is not None, prev_list))
 
-# print(newlist)
+print(newlist)
 
 
 """ 39 Sum of Nested Lists Using Recursion
@@ -1102,18 +1113,18 @@ Expected Result: 21
 """
 
 
-# test_data = [1, 2, [3,4], [5,6], [2,34,[4,3]]]
+test_data = [1, 2, [3,4], [5,6], [2,34,[4,3]]]
 
-# def cal_sum(test):
-#     total =0
-#     for i in test:
-#         if isinstance(i, list):
-#             total += cal_sum(i)
-#         else:
-#             total += i
+def cal_sum(test):
+    total =0
+    for i in test:
+        if isinstance(i, list):
+            total += cal_sum(i)
+        else:
+            total += i
 
-#     return total
-# print(cal_sum(test_data))
+    return total
+print(cal_sum(test_data))
 
 
 """ 40
@@ -1128,13 +1139,13 @@ Example :
 """
 
 
-# def harmonic_sum_upto(n):
-#     if n == 1:
-#         return 1
-#     else:
-#         return 1/n + harmonic_sum_upto(n - 1)
+def harmonic_sum_upto(n):
+    if n == 1:
+        return 1
+    else:
+        return 1/n + harmonic_sum_upto(n - 1)
 
-# print(harmonic_sum_upto(5))
+print(harmonic_sum_upto(5))
 
 
 """ 41
@@ -1145,12 +1156,12 @@ Test Data :
 """
 
 
-# def power(a,b):
-#     if b == 0:
-#         return 1
-#     return a * power(a, b-1)
+def power(a,b):
+    if b == 0:
+        return 1
+    return a * power(a, b-1)
 
-# print(power(3,4))
+print(power(3,4))
 
 
 
@@ -1161,30 +1172,30 @@ Design a decorator requires_role(required_role) that checks if the current user 
 
 
 
-# allowed = ['ashhad', 'ali']
+allowed = ['ashhad', 'ali']
 
 
 
-# def requires_role(name):
-#     def decorator(func):
-#         def wrapper(*args, **kwargs):
+def requires_role(name):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
             
-#             if name in allowed:
-#                 result = func(*args, **kwargs)
-#                 return result
-#             else:
-#                 print("Permission denied")
+            if name in allowed:
+                result = func(*args, **kwargs)
+                return result
+            else:
+                print("Permission denied")
 
-#         return wrapper
-#     return decorator
-
-
-# @requires_role("ashhad")
-# def run_some(b):
-#     return b*5
+        return wrapper
+    return decorator
 
 
-# print(run_some(4))
+@requires_role("ashhad")
+def run_some(b):
+    return b*5
+
+
+print(run_some(4))
 
 
 
@@ -1194,30 +1205,30 @@ Create a decorator validate_input(min_val, max_val, arg_index) that validates a 
 """
 
 
-# def validate_input(min_val, max_val, arg_index):
-#     def decorator(func):
-#         def wrapper(*args, **kwargs):
-#             try:
-#                 arg_value = args[arg_index]
-#             except IndexError:
-#                 raise ValueError("Invalid argument index")
+def validate_input(min_val, max_val, arg_index):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            try:
+                arg_value = args[arg_index]
+            except IndexError:
+                raise ValueError("Invalid argument index")
 
-#             if arg_value < min_val or arg_value > max_val:
-#                 raise ValueError(f"Please check your value is in range. MAX:{max_val}, MIN: {min_val}")
-#             return func(*args, **kwargs)
+            if arg_value < min_val or arg_value > max_val:
+                raise ValueError(f"Please check your value is in range. MAX:{max_val}, MIN: {min_val}")
+            return func(*args, **kwargs)
                    
-#         return wrapper
-#     return decorator
+        return wrapper
+    return decorator
 
-# @validate_input(5, 100, 0)
-# def some_func(a,b):
+@validate_input(5, 100, 0)
+def some_func(a,b):
 
-#     return a*b
+    return a*b
 
 
 
-# c = some_func
-# print(c(4,101))
+c = some_func
+print(c(4,101))
 
 
 """ 44
@@ -1226,17 +1237,17 @@ Write a function safe_divide(numerator, denominator, default_value=0) that perfo
 
 """
 
-# def function_safe_divide(numerator, denominator, default_value=0):
-#     if denominator ==0 or numerator ==0:
-#         return default_value
-#     else:
-#         return numerator / denominator
+def function_safe_divide(numerator, denominator, default_value=0):
+    if denominator ==0 or numerator ==0:
+        return default_value
+    else:
+        return numerator / denominator
         
 
 
-# print(function_safe_divide(3,0))
-# print(function_safe_divide(3,2))
-# print(function_safe_divide(256,4))
+print(function_safe_divide(3,0))
+print(function_safe_divide(3,2))
+print(function_safe_divide(256,4))
 
 
 
@@ -1247,16 +1258,16 @@ Write a function get_list_element(data_list, index, default_value=None) that saf
 
 """
 
-# def get_list_element(data_list, index, default_value=None):
-#     if index > len(data_list):
-#         return default_value
-#     else:
-#         return data_list[index]
+def get_list_element(data_list, index, default_value=None):
+    if index > len(data_list):
+        return default_value
+    else:
+        return data_list[index]
     
 
-# print(get_list_element([3,2,1,"asdasd"], 3))
-# print(get_list_element([3,2,1,"asdasd"], 8))
-# print(get_list_element([3,2,1,"asdasd"], 3))
+print(get_list_element([3,2,1,"asdasd"], 3))
+print(get_list_element([3,2,1,"asdasd"], 8))
+print(get_list_element([3,2,1,"asdasd"], 3))
 
 
 """ 46
@@ -1265,16 +1276,16 @@ Implement a function read_config(config_dict, key_path, default_value=None) that
 
 """
 
-# def read_config(config_dict, key_path, default_value=None):
-#     pass
+def read_config(config_dict, key_path, default_value=None):
+    pass
 
 
-# dict1 = {'some': "value",
-#         "nested": 
-#             {5 : 21313},
-#         "missing value": None
-#         }
-# path = 4
+dict1 = {'some': "value",
+        "nested": 
+            {5 : 21313},
+        "missing value": None
+        }
+path = 4
 
 
 
@@ -1285,23 +1296,23 @@ Write a higher-order function map_list(items, transform_callback) that takes a l
 """
 
 
-# def map_list(items, transform_callback):
-#     converted_list = []
-#     for i in items:
-#         result = transform_callback(i)
-#         converted_list.append(result)
-#     return converted_list
+def map_list(items, transform_callback):
+    converted_list = []
+    for i in items:
+        result = transform_callback(i)
+        converted_list.append(result)
+    return converted_list
 
 
-# def apply_transformation(a):
-#     return a * 2
+def apply_transformation(a):
+    return a * 2
 
-# nums = [2,4,6,8,9]
+nums = [2,4,6,8,9]
 
 
-# results = map_list(nums, apply_transformation)
+results = map_list(nums, apply_transformation)
 
-# print(results)
+print(results)
 
 
 
@@ -1311,21 +1322,21 @@ Implement filter_list(items, predicate_callback) that takes a list and a predica
 
 """
 
-# def filter_list(items, predicate_callback):
-#     new_l = []
-#     for item in items:
-#         if predicate_callback(item):
-#             new_l.append(item)
-#     return new_l
+def filter_list(items, predicate_callback):
+    new_l = []
+    for item in items:
+        if predicate_callback(item):
+            new_l.append(item)
+    return new_l
 
 
-# def return_state(a):
-#     return a > 5
+def return_state(a):
+    return a > 5
 
 
-# numbers = [2, 6, 8, 3, 10, 1]
-# filtered = filter_list(numbers, return_state)
-# print(filtered)
+numbers = [2, 6, 8, 3, 10, 1]
+filtered = filter_list(numbers, return_state)
+print(filtered)
 
 
 """ 49
@@ -1341,17 +1352,35 @@ emitter.emit("greet", "Alice")
 
 """
 
+class EventEmitter:
+    def __init__(self):
+        self.events = {}
 
-# class EventEmitter():
-    
+    def on(self, event_name, callback):
+        if event_name not in self.events:
+            self.events[event_name] = []
+        self.events[event_name].append(callback)
+
+    def emit(self, event_name, *args, **kwargs):
+        if event_name in self.events:
+            for func in self.events[event_name]:
+                func(*args, **kwargs)
 
 
-# emitter = EventEmitter()
-# def greet(name): print(f"Hello, {name}!")
-# def farewell(name): print(f"Goodbye, {name}!")
-# emitter.on("greet", greet)
-# emitter.on("farewell", farewell)
-# emitter.emit("greet", "Alice")
+emitter = EventEmitter()
+
+def greet(name):
+    print(f"Hello, {name}!")
+
+def farewell(name):
+    print(f"Goodbye, {name}!")
+
+emitter.on("greet", greet)
+emitter.on("farewell", farewell)
+
+emitter.emit("greet", "Alice")
+emitter.emit("farewell", "Bob")
+
 
 
 
@@ -1366,29 +1395,29 @@ def failure_handler(error): print(f"Task failed: {error}")
 # simulate_async_task("User data", success_handler, failure_handler)
 """
 
-# import time
+import time
 
-# def simulate_async_task(data, on_success_callback, on_failure_callback):
-#     start_time = time.time()
-#     data*2
-#     time.sleep(0.5)
-#     end_time  = time.time()
-#     time_taken = end_time - start_time
-#     print(f"Start: {start_time},\n End Time: {end_time},\n Time Taken: {time_taken}")
+def simulate_async_task(data, on_success_callback, on_failure_callback):
+    start_time = time.time()
+    data*2
+    time.sleep(0.5)
+    end_time  = time.time()
+    time_taken = end_time - start_time
+    print(f"Start: {start_time},\n End Time: {end_time},\n Time Taken: {time_taken}")
     
-#     if time_taken > 0.5:
-#         on_failure_callback()
-#     else:
-#         on_success_callback()
+    if time_taken > 0.5:
+        on_failure_callback()
+    else:
+        on_success_callback()
 
 
-# def succeeds(): print('Function succeeded')
+def succeeds(): print('Function succeeded')
 
-# def fails(): print('Function failed')
+def fails(): print('Function failed')
 
-# data = [2,3,4,5,6,7,8, [2,3,4,5,6,6,7, [2,3,4,5,5,6,76]]]
+data = [2,3,4,5,6,7,8, [2,3,4,5,6,6,7, [2,3,4,5,5,6,76]]]
 
-# simulate_async_task(data, succeeds, fails)
+simulate_async_task(data, succeeds, fails)
 
 
 
@@ -1404,25 +1433,22 @@ print(run_pipeline(5, add_one, multiply_by_two)) # (5 + 1) * 2 = 12
 """
 
 
-# def run_pipeline(initial_data, *pipeline_stages):
+def run_pipeline(initial_data, *pipeline_stages):
     
-#     result_1 = func1(initial_data)
-#     result_2 = func2(result1)
-#     result_3 = func3(result2)
+    # result_1 = pipeline_stages[0](initial_data)
+    # result_2 = pipeline_stages[1](result_1)
+    # result_3 = pipeline_stages[2](result_2)
 
-#     results = 
-#     for i in pipeline_stages:
-#         result = i(initial_data)
+    results = [] 
+    for i in pipeline_stages:
+        result = i(initial_data)
+    return result
 
+def add_one(x): return x + 1
 
+def multiply_by_two(x): return x * 2
 
-# def add_one(x): return x + 1
-
-# def multiply_by_two(x): return x * 2
-
-
-
-# print(run_pipeline(5, add_one, multiply_by_two))
+print(run_pipeline(5, add_one, multiply_by_two))
 
 
 
@@ -1439,22 +1465,22 @@ print(run_pipeline(5, add_one, multiply_by_two)) # (5 + 1) * 2 = 12
 
 
 
-# def run_pipeline(initial_data, *pipeline_stages):
-#         print()
+def run_pipeline(initial_data, *pipeline_stages):
+        print()
 
-#         result1 = pipeline_stages[0](initial_data)
-#         print(result1)
+        result1 = pipeline_stages[0](initial_data)
+        print(result1)
 
-#         result2 = pipeline_stages[1](result1)
-#         print(result2)
-#         return result2
+        result2 = pipeline_stages[1](result1)
+        print(result2)
+        return result2
 
 
 
-# def add_one(x): return x + 1
-# def multiply_by_two(x): return x * 2
-# result = run_pipeline(5, add_one, multiply_by_two)
-# print(result)
+def add_one(x): return x + 1
+def multiply_by_two(x): return x * 2
+result = run_pipeline(5, add_one, multiply_by_two)
+print(result)
 
 
 """ 53
@@ -1468,18 +1494,18 @@ def sort_by_second_element(item1, item2): return item1[1] < item2[1]
 """
 
 
-# def custom_sort(items, compare_func):
-#     for i in range(len(items)):
-#         for j in range(0-i-1):
-#             if not compare_func(compare_func(items[i], items[i+1])):
-#                 items[j], items[j+1] = items[j+1], items[j]
-#     return items
+def custom_sort(items, compare_func):
+    for i in range(len(items)):
+        for j in range(0-i-1):
+            if not compare_func(compare_func(items[i], items[i+1])):
+                items[j], items[j+1] = items[j+1], items[j]
+    return items
 
-# data = [(1, 'apple'), (3, 'banana'), (2, 'cherry')]
-# def sort_by_second_element(item1, item2): 
-#     print("item 1 and 2: ", item1[0], item2[0])
-#     return item1[0] < item2[0]
-# print(custom_sort(data, sort_by_second_element))
+data = [(1, 'apple'), (3, 'banana'), (2, 'cherry')]
+def sort_by_second_element(item1, item2): 
+    print("item 1 and 2: ", item1[0], item2[0])
+    return item1[0] < item2[0]
+print(custom_sort(data, sort_by_second_element))
 
 """ 54
 
@@ -1491,14 +1517,14 @@ print(apply_twice(add_5, 10)) # (10 + 5) + 5 = 20
 """
 
 
-# def apply_twice(func, arg):
-#     result = func(arg)
+def apply_twice(func, arg):
+    result = func(arg)
 
-#     new_result = func(result)
-#     return new_result
+    new_result = func(result)
+    return new_result
 
-# def add_5(x): return x + 5
-# print(apply_twice(add_5, 10)) # (10 + 5) + 5 = 20
+def add_5(x): return x + 5
+print(apply_twice(add_5, 10)) # (10 + 5) + 5 = 20
 
 
 
@@ -1506,17 +1532,17 @@ print(apply_twice(add_5, 10)) # (10 + 5) + 5 = 20
 Write a function deep_get(dictionary, keys, default=None) that retrieves a value from a nested dictionary given a list of keys, returning default if any key in the path is not found.
 """
 
-# def deep_get(dictionary, keys, default=None):
-#     for key in keys:
-#         if isinstance(dictionary, dict) and key in dictionary:
-#             dictionary = dictionary[key]
-#         else:
-#             return default
-#     return dictionary
+def deep_get(dictionary, keys, default=None):
+    for key in keys:
+        if isinstance(dictionary, dict) and key in dictionary:
+            dictionary = dictionary[key]
+        else:
+            return default
+    return dictionary
 
-# example_dict = {'a': {'b': {'c': 42}}}
-# print(deep_get(example_dict, ['a', 'b', 'c']))
-# print(deep_get(example_dict, ['a', 'x', 'c'], default='not found'))
+example_dict = {'a': {'b': {'c': 42}}}
+print(deep_get(example_dict, ['a', 'b', 'c']))
+print(deep_get(example_dict, ['a', 'x', 'c'], default='not found'))
 
 
 
@@ -1524,15 +1550,15 @@ Write a function deep_get(dictionary, keys, default=None) that retrieves a value
 Implement a generator read_column(filepath, column_index, delimiter=',') that yields specific column values from a CSV file line by line.
 
 """
-# def read_column(filepath, column_index, delimiter=','):
-#     with open(filepath, 'r') as f:
-#         for line in f:
-#             parts = line.strip().split(delimiter)
-#             if len(parts) > column_index:
-#                 yield parts[column_index]
+def read_column(filepath, column_index, delimiter=','):
+    with open(filepath, 'r') as f:
+        for line in f:
+            parts = line.strip().split(delimiter)
+            if len(parts) > column_index:
+                yield parts[column_index]
 
-# for value in read_column('data.csv', 1):
-#     print(value)
+for value in read_column('data.csv', 1):
+    print(value)
 
 
 
@@ -1542,38 +1568,38 @@ Design a decorator transactional that ensures a function's side effects are only
 """
 
 
-# import copy
+import copy
 
-# def transactional(func):
-#     def wrapper(*args, **kwargs):
-#         backups = []
-#         for a in args:
-#             if isinstance(a, (list, dict)):
-#                 backups.append(copy.deepcopy(a))
-#             else:
-#                 backups.append(None)
-#         try:
-#             return func(*args, **kwargs)
-#         except Exception:
-#             for i, a in enumerate(args):
-#                 if backups[i] is not None:
-#                     if isinstance(a, list):
-#                         a[:] = backups[i]
-#                     elif isinstance(a, dict):
-#                         a.clear()
-#                         a.update(backups[i])
-#             print("Error! Rolled back.")
-#     return wrapper
+def transactional(func):
+    def wrapper(*args, **kwargs):
+        backups = []
+        for a in args:
+            if isinstance(a, (list, dict)):
+                backups.append(copy.deepcopy(a))
+            else:
+                backups.append(None)
+        try:
+            return func(*args, **kwargs)
+        except Exception:
+            for i, a in enumerate(args):
+                if backups[i] is not None:
+                    if isinstance(a, list):
+                        a[:] = backups[i]
+                    elif isinstance(a, dict):
+                        a.clear()
+                        a.update(backups[i])
+            print("Error! Rolled back.")
+    return wrapper
 
-# @transactional
-# def modify_data(data):
-#     data.append(10)
-#     data.append(20)
-#     raise ValueError("oops")
+@transactional
+def modify_data(data):
+    data.append(10)
+    data.append(20)
+    raise ValueError("oops")
 
-# my_list = [1, 2, 3]
-# modify_data(my_list)
-# print(my_list)
+my_list = [1, 2, 3]
+modify_data(my_list)
+print(my_list)
 
 
 
@@ -1582,25 +1608,25 @@ Create a closure moving_median(window_size) that returns a function. The returne
 
 
 
-# def moving_median(window_size):
-#     nums = []
-#     def add_number(n):
-#         nums.append(n)
-#         if len(nums) > window_size:
-#             nums.pop(0)
-#         s = sorted(nums)
-#         m = len(s)
-#         if m % 2 == 1:
-#             return s[m//2]
-#         else:
-#             return (s[m//2 - 1] + s[m//2]) / 2
-#     return add_number
+def moving_median(window_size):
+    nums = []
+    def add_number(n):
+        nums.append(n)
+        if len(nums) > window_size:
+            nums.pop(0)
+        s = sorted(nums)
+        m = len(s)
+        if m % 2 == 1:
+            return s[m//2]
+        else:
+            return (s[m//2 - 1] + s[m//2]) / 2
+    return add_number
 
-# f = moving_median(3)
-# print(f(1))
-# print(f(5))
-# print(f(2))
-# print(f(10))
+f = moving_median(3)
+print(f(1))
+print(f(5))
+print(f(2))
+print(f(10))
 
 
 
@@ -1611,33 +1637,33 @@ Write a higher-order function memoize_with_timeout(timeout_seconds) that returns
 """
 
 
-# import time
+import time
 
-# def memoize_with_timeout(timeout_seconds):
-#     def decorator(func):
-#         cache = {}
-#         def wrapper(*args):
-#             now = time.time()
-#             if args in cache:
-#                 value, t = cache[args]
-#                 if now - t < timeout_seconds:
-#                     return value
-#             result = func(*args)
-#             cache[args] = (result, now)
-#             return result
-#         return wrapper
-#     return decorator
+def memoize_with_timeout(timeout_seconds):
+    def decorator(func):
+        cache = {}
+        def wrapper(*args):
+            now = time.time()
+            if args in cache:
+                value, t = cache[args]
+                if now - t < timeout_seconds:
+                    return value
+            result = func(*args)
+            cache[args] = (result, now)
+            return result
+        return wrapper
+    return decorator
 
-# @memoize_with_timeout(3)
-# def add(a, b):
-#     print("Calculating...")
-#     return a + b
+@memoize_with_timeout(3)
+def add(a, b):
+    print("Calculating...")
+    return a + b
 
-# print(add(2, 3))
-# time.sleep(2)
-# print(add(2, 3))
-# time.sleep(2)
-# print(add(2, 3))
+print(add(2, 3))
+time.sleep(2)
+print(add(2, 3))
+time.sleep(2)
+print(add(2, 3))
 
 
 
@@ -1648,15 +1674,15 @@ Implement a generator zip_longest_fill(list1, list2, fillvalue=None) that behave
 itertools.zip_longest(*iterables, fillvalue=None): Continues until the longest iterable is exhausted. For iterables that run out of items, it fills in the missing values with fillvalue (which defaults to None).
 
 """
-# def zip_longest_fill(list1, list2, fillvalue=None):
-#     max_len = max(len(list1), len(list2))
-#     for i in range(max_len):
-#         a = list1[i] if i < len(list1) else fillvalue
-#         b = list2[i] if i < len(list2) else fillvalue
-#         yield (a, b)
+def zip_longest_fill(list1, list2, fillvalue=None):
+    max_len = max(len(list1), len(list2))
+    for i in range(max_len):
+        a = list1[i] if i < len(list1) else fillvalue
+        b = list2[i] if i < len(list2) else fillvalue
+        yield (a, b)
 
-# for x in zip_longest_fill([1,2,3], ['a'], fillvalue=0):
-#     print(x)
+for x in zip_longest_fill([1,2,3], ['a'], fillvalue=0):
+    print(x)
 
 
 
@@ -1665,22 +1691,22 @@ itertools.zip_longest(*iterables, fillvalue=None): Continues until the longest i
 Design a callback system for a ProgressBar class, where on_progress is called with the current percentage and on_complete is called when done.
 """
 
-# def make_progress_bar(on_progress, on_complete):
-#     def run(total):
-#         for i in range(total + 1):
-#             percent = int(i / total * 100)
-#             on_progress(percent)
-#         on_complete()
-#     return run
+def make_progress_bar(on_progress, on_complete):
+    def run(total):
+        for i in range(total + 1):
+            percent = int(i / total * 100)
+            on_progress(percent)
+        on_complete()
+    return run
 
-# def show_progress(p):
-#     print("Progress:", p, "%")
+def show_progress(p):
+    print("Progress:", p, "%")
 
-# def done():
-#     print("Done!")
+def done():
+    print("Done!")
 
-# bar = make_progress_bar(show_progress, done)
-# bar(5)
+bar = make_progress_bar(show_progress, done)
+bar(5)
 
 
 
@@ -1691,25 +1717,25 @@ Create a decorator log_exceptions(logger_func) that catches any exception raised
 
 """
 
-# def log_exceptions(logger_func):
-#     def decorator(func):
-#         def wrapper(*args, **kwargs):
-#             try:
-#                 return func(*args, **kwargs)
-#             except Exception as e:
-#                 logger_func(f"Error in {func.__name__}: {e}")
-#                 raise
-#         return wrapper
-#     return decorator
+def log_exceptions(logger_func):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            try:
+                return func(*args, **kwargs)
+            except Exception as e:
+                logger_func(f"Error in {func.__name__}: {e}")
+                raise
+        return wrapper
+    return decorator
 
-# def my_logger(msg):
-#     print("LOG:", msg)
+def my_logger(msg):
+    print("LOG:", msg)
 
-# @log_exceptions(my_logger)
-# def divide(a, b):
-#     return a / b
+@log_exceptions(my_logger)
+def divide(a, b):
+    return a / b
 
-# divide(5, 0)
+divide(5, 0)
 
 
 
@@ -1719,26 +1745,26 @@ Write a function find_longest_common_prefix(strings) that takes a list of string
 """
 
 
-# def find_longest_common_prefix(strings):
-#     if not strings:
-#         return ""
-#     prefix = strings[0]
-#     for s in strings[1:]:
-#         while not s.startswith(prefix):
-#             prefix = prefix[:-1]
-#             if not prefix:
-#                 return ""
-#     return prefix
+def find_longest_common_prefix(strings):
+    if not strings:
+        return ""
+    prefix = strings[0]
+    for s in strings[1:]:
+        while not s.startswith(prefix):
+            prefix = prefix[:-1]
+            if not prefix:
+                return ""
+    return prefix
 
-# print(find_longest_common_prefix(["flower", "flow", "flight"]))
-# print(find_longest_common_prefix(["dog", "doracecar", "docardo"]))
-
-
+print(find_longest_common_prefix(["flower", "flow", "flight"]))
+print(find_longest_common_prefix(["dog", "doracecar", "docardo"]))
 
 
 
 
-""" 63
+
+
+""" 64
 Implement a recursive function find_all_subsets(items) that returns a list of all possible subsets (including the empty set) of a given list of items.
 
 Imagine you have a list of items: ['A', 'B', 'C'].
@@ -1748,25 +1774,25 @@ Final list of subsets would be:
 """
 
 
-# def find_all_subsets(items):
-#     if not items:
-#         return [[]]
+def find_all_subsets(items):
+    if not items:
+        return [[]]
     
-#     first_item = items[0]
-#     subsets_of_rest = find_all_subsets(items[1:])
-#     all_subsets = []
+    first_item = items[0]
+    subsets_of_rest = find_all_subsets(items[1:])
+    all_subsets = []
 
-#     for subset in subsets_of_rest:
-#         all_subsets.append(subset)
-#         all_subsets.append([first_item] + subset)
+    for subset in subsets_of_rest:
+        all_subsets.append(subset)
+        all_subsets.append([first_item] + subset)
         
-#     return all_subsets
+    return all_subsets
 
-# print(find_all_subsets([1, 2, 3]))
+print(find_all_subsets([1, 2, 3]))
 
 
 
-""" 64
+""" 65
 
 Design a generator flatten_dict_values(nested_dict) that yields all non-dictionary values from a potentially deeply nested dictionary.
 
@@ -1784,30 +1810,30 @@ OUTPUT:
 1, 2, 3, 4, 5, 6
 # """
 
-# def flatten_dict_values(nested_dict):
-#     for v in nested_dict.values():
-#         if isinstance(v, dict):
-#             print(v)
-#             print(next(flatten_dict_values(v)))
-#             yield from flatten_dict_values(v) # yield from is used when we have two generators
-#         else:
-#             yield(v)
+def flatten_dict_values(nested_dict):
+    for v in nested_dict.values():
+        if isinstance(v, dict):
+            print(v)
+            print(next(flatten_dict_values(v)))
+            yield from flatten_dict_values(v) # yield from is used when we have two generators
+        else:
+            yield(v)
 
 
 
 
-# nested_dict = {
-#     'a': 1,
-#     'b': {'x': "batman", 'y': {'p': 3, 'q': {'r': "4"}}},
-#     'c': {'m': 5, 'n': 6}
-# }
+nested_dict = {
+    'a': 1,
+    'b': {'x': "batman", 'y': {'p': 3, 'q': {'r': "4"}}},
+    'c': {'m': 5, 'n': 6}
+}
 
 
-# print(list(flatten_dict_values(nested_dict)))
+print(list(flatten_dict_values(nested_dict)))
 
 
 
-""" 65
+""" 66
 
 
 Write a higher-order function apply_multiple(value, *functions) that applies a list of functions to an initial value in sequence, passing the result of one to the next, and returns the final result.
@@ -1815,349 +1841,388 @@ Write a higher-order function apply_multiple(value, *functions) that applies a l
 """
 
 
-# def apply_multiple(value, *functions):
-#     for f in functions:
-#         value = f(value)
-#     return value
+def apply_multiple(value, *functions):
+    for f in functions:
+        value = f(value)
+    return value
 
-# def add2(x): return x + 2
-# def mul3(x): return x * 3
-# def sub1(x): return x - 1
+def add2(x): return x + 2
+def mul3(x): return x * 3
+def sub1(x): return x - 1
 
-# print(apply_multiple(5, add2, mul3, sub1))
-
-
-
-
-""" 66
-Implement a decorator context_aware_logger(context_key) that dynamically adds a context_key and its value (from a dictionary passed to the decorated function) to all log messages.
-
-"""
-
-# def context_aware_logger(context_key):
-#     def decorator(func):
-#         def wrapper(context, *args, **kwargs):
-#             def log(msg):
-#                 print(f"[{context_key}={context.get(context_key, 'N/A')}] {msg}")
-#             return func(context, log, *args, **kwargs)
-#         return wrapper
-#     return decorator
-
-# @context_aware_logger('user')
-# def process_data(context, log):
-#     log("Starting process")
-#     log("Processing done")
-
-# process_data({'user': 'Ashhad'})
-
-
-
-""" 66
-
-Create a closure event_rate_limiter(max_events_per_minute) that returns a function. This function, when called, allows an event to pass through only if the rate limit is not exceeded.
-Hint: A nonlocal variable is remembered in a closure function.
-"""
-# import time
-
-# def event_rate_limiter(max_events_per_minute):
-#     count = 0
-
-#     def function_run():
-#         nonlocal count
-#         if count >= max_events_per_minute:
-#             print(f"Function run {count} times")
-#             print("Function execution blocked")
-#         else:
-#             count += 1
-#             print(f"Function is running count = {count}")
-#             time.sleep(1)
-#             return count * 20
-
-#     return function_run
-
-
-# limited_func = event_rate_limiter(5)
-
-# for _ in range(7):
-#     result = limited_func()
-#     print(result)
+print(apply_multiple(5, add2, mul3, sub1))
 
 
 
 
 """ 67
+Implement a decorator context_aware_logger(context_key) that dynamically adds a context_key and its value (from a dictionary passed to the decorated function) to all log messages.
+
+"""
+
+def context_aware_logger(context_key):
+    def decorator(func):
+        def wrapper(context, *args, **kwargs):
+            def log(msg):
+                print(f"[{context_key}={context.get(context_key, 'N/A')}] {msg}")
+            return func(context, log, *args, **kwargs)
+        return wrapper
+    return decorator
+
+@context_aware_logger('user')
+def process_data(context, log):
+    log("Starting process")
+    log("Processing done")
+
+process_data({'user': 'Ashhad'})
+
+
+
+""" 68
+
+Create a closure event_rate_limiter(max_events_per_minute) that returns a function. This function, when called, allows an event to pass through only if the rate limit is not exceeded.
+Hint: A nonlocal variable is remembered in a closure function.
+"""
+import time
+
+def event_rate_limiter(max_events_per_minute):
+    count = 0
+
+    def function_run():
+        nonlocal count
+        if count >= max_events_per_minute:
+            print(f"Function run {count} times")
+            print("Function execution blocked")
+        else:
+            count += 1
+            print(f"Function is running count = {count}")
+            time.sleep(1)
+            return count * 20
+
+    return function_run
+
+
+limited_func = event_rate_limiter(5)
+
+for _ in range(7):
+    result = limited_func()
+    print(result)
+
+
+
+
+""" 69
 Create a generator pairwise(iterable) that yields successive overlapping pairs from an iterable (e.g., [1,2,3,4] -> (1,2), (2,3), (3,4)).
 
 # """
 
 
-# def pairwise(iterable):
-#     l = []
-#     for i in range(len(iterable)-1):
-#         diff = abs(iterable[i] - iterable[i+1])
-#         if diff == 1:
-#             yield iterable[i], iterable[i+1]
+def pairwise(iterable):
+    l = []
+    for i in range(len(iterable)-1):
+        diff = abs(iterable[i] - iterable[i+1])
+        if diff == 1:
+            yield iterable[i], iterable[i+1]
 
 
 
-# print(list(pairwise([1,2,3,4])))
+print(list(pairwise([1,2,3,4])))
 
 
 
-""" 68
+""" 70
 Implement a decorator ensure_positive_result that checks if the decorated function's return value is positive. If not, raise a ValueError.
 
 """
 
-# def ensure_positive_result(func):
-#     def wrapper(*args, **kwargs):
-#         result = func(*args, **kwargs)
-#         if result <= 0:
-#             raise ValueError("Result is not positive")
-#         return result
-#     return wrapper
+def ensure_positive_result(func):
+    def wrapper(*args, **kwargs):
+        result = func(*args, **kwargs)
+        if result <= 0:
+            raise ValueError("Result is not positive")
+        return result
+    return wrapper
 
-# @ensure_positive_result
-# def subtract(a, b):
-#     return a - b
+@ensure_positive_result
+def subtract(a, b):
+    return a - b
 
-# print(subtract(5, 3))
-# print(subtract(2, 5))
+print(subtract(5, 3))
+print(subtract(2, 5))
 
-""" 69
+""" 71
 
 Design a closure chained_callable(initial_value) that returns a function. The returned function can be called repeatedly (e.g., func(1)(2)(3)), adding to its internal state, and a final value() call returns the accumulated result.
 """
 
-# def chained_callable(initial_value=0):
-#     total = initial_value
-#     def inner(x=None):
-#         nonlocal total
-#         if x is None:
-#             return total
-#         total += x
-#         return inner
-#     return inner
+def chained_callable(initial_value=0):
+    total = initial_value
+    def inner(x=None):
+        nonlocal total
+        if x is None:
+            return total
+        total += x
+        return inner
+    return inner
 
-# f = chained_callable(5)
-# print(f(1)(2)(3)(4)())  
+f = chained_callable(5)
+print(f(1)(2)(3)(4)())  
 
 
-""" 70
+""" 72
 Create a generator random_walk_2d(start_x, start_y, steps) that yields the (x, y) coordinates of a 2D random walk for a given number of steps.
 
 """
 
-# import random
+import random
 
-# def random_walk_2d(start_x, start_y, steps):
-#     x, y = start_x, start_y
-#     for _ in range(steps):
-#         dx, dy = random.choice([(1,0), (-1,0), (0,1), (0,-1)])
-#         x += dx
-#         y += dy
-#         yield (x, y)
+def random_walk_2d(start_x, start_y, steps):
+    x, y = start_x, start_y
+    for _ in range(steps):
+        dx, dy = random.choice([(1,0), (-1,0), (0,1), (0,-1)])
+        x += dx
+        y += dy
+        yield (x, y)
 
-# for pos in random_walk_2d(0, 0, 5):
-#     print(pos)
+for pos in random_walk_2d(0, 0, 5):
+    print(pos)
 
 
 
-""" 71
+""" 73
 Write a higher-order function cache_to_disk(filepath) that returns a decorator. This decorator caches function results to a specified file, reloading them on subsequent runs.
 
 
 """
 
-# import os
-# def cache_to_disk(filepath):
-#     def decorator(func):
-#         def wrapper(*args, **kwargs):
-#             result = func(*args, **kwargs)
+import os
+def cache_to_disk(filepath):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            result = func(*args, **kwargs)
             
-#             if os.path.exists(filepath):
-#                 with open(filepath, "r") as file:
-#                     print("Loaded from cache.")
-#                     return file.read()
+            if os.path.exists(filepath):
+                with open(filepath, "r") as file:
+                    print("Loaded from cache.")
+                    return file.read()
             
-#             with open(filepath, "w") as file:
-#                 file.write(str(result))
+            with open(filepath, "w") as file:
+                file.write(str(result))
             
-#             return result
-#         return wrapper
-#     return decorator
+            return result
+        return wrapper
+    return decorator
     
 
-# path = r".\hackerrank\text.txt"
+path = r".\hackerrank\text.txt"
 
-# @cache_to_disk(path)
-# def new_func():
-#     print("Running computation...")
-#     return 34*432
+@cache_to_disk(path)
+def new_func():
+    print("Running computation...")
+    return 34*432
 
-# print(new_func())
-# print(new_func())
-
-
-
-""" 73
-Design a decorator validate_return_type(expected_type) that checks if the function's return value matches the expected_type.
-
-"""
-
-# def validate_return_type(expected_type):
-#     def decorator(func):
-#         def wrapper(*args, **kwargs):
-#             result = func(*args, **kwargs)
-#             if type(result) == expected_type:
-#                 print("Both types match")
-#                 return result
-#             else:
-#                 return "Sorry value types dont match"
-#         return wrapper
-#     return decorator
-    
-
-# integers = []
-
-# @validate_return_type(type(integers))
-# def func_for_something(input_data):
-#     if input_data == "String":
-#         return "This is a string value"
-#     elif input_data == "Int":
-#         return [123,321,5454]
-
-
-# print(func_for_something("Int"))
-# print(func_for_something("String")) # Should give "Sorry value types dont match"
+print(new_func())
+print(new_func())
 
 
 """ 74
 
+Design a function that restricts how frequently another function can be called. For example, a “rate_limiter()” — like in APIs — that allows a maximum number of calls within a certain time window.
+
+"""
+def rate_limiter(max_calls):
+    count = 0
+
+    def limiter():
+        nonlocal count
+        if count < max_calls:
+            count += 1
+            return "Allowed"
+        else:
+            return "Blocked"
+
+    def reset(new_limit):
+        nonlocal count, max_calls
+        count = 0
+        max_calls = new_limit
+
+    limiter.reset = reset
+    return limiter
+
+
+limiter = rate_limiter(3)
+
+print(limiter())
+print(limiter())
+print(limiter())
+print(limiter())
+
+limiter.reset(2)
+
+print(limiter())
+print(limiter())
+print(limiter())
+
+
+
+""" 75
+Design a decorator validate_return_type(expected_type) that checks if the function's return value matches the expected_type.
+
+"""
+
+def validate_return_type(expected_type):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            result = func(*args, **kwargs)
+            if type(result) == expected_type:
+                print("Both types match")
+                return result
+            else:
+                return "Sorry value types dont match"
+        return wrapper
+    return decorator
+    
+
+integers = []
+
+@validate_return_type(type(integers))
+def func_for_something(input_data):
+    if input_data == "String":
+        return "This is a string value"
+    elif input_data == "Int":
+        return [123,321,5454]
+
+
+print(func_for_something("Int"))
+print(func_for_something("String")) # Should give "Sorry value types dont match"
+
+
+""" 76
+
 Create a closure configurable_data_formatter(format_string) that returns a function which formats data according to the format_string.
 """
 
-# def configurable_data_formatter(format_string):
-#     def formatter(**data):
-#         return format_string.format(**data)
-#     return formatter
+def configurable_data_formatter(format_string):
+    def formatter(**data):
+        return format_string.format(**data)
+    return formatter
 
-# f = configurable_data_formatter("Name: {name}, Age: {age}")
-# print(f(name="Ashhad", age=21))
+f = configurable_data_formatter("Name: {name}, Age: {age}")
+print(f(name="Ashhad", age=21))
 
-""" 75
+""" 77
 
 Implement a generator interleave(*iterables) that yields elements from multiple iterables, one from each in turn, until all are exhausted.
 """
 
 
-# def interleave(*iterables):
-#     iterators = [iter(it) for it in iterables]
-#     while iterators:
-#         new_iterators = []
-#         for it in iterators:
-#             try:
-#                 yield next(it)
-#                 new_iterators.append(it)
-#             except StopIteration:
-#                 pass
-#         iterators = new_iterators
+def interleave(*iterables):
+    iterators = [iter(it) for it in iterables]
+    while iterators:
+        new_iterators = []
+        for it in iterators:
+            try:
+                yield next(it)
+                new_iterators.append(it)
+            except StopIteration:
+                pass
+        iterators = new_iterators
 
-# print(list(interleave([1,2,3], ['a','b'], [True, False, None])))
+print(list(interleave([1,2,3], ['a','b'], [True, False, None])))
 
 
 
-""" 76
+""" 78
 
 Design a decorator suppress_output that redirects stdout and stderr for the duration of the decorated function's execution, capturing or discarding it
 """
-# import sys
-# import io
+import sys
+import io
 
-# def suppress_output(func):
-#     def wrapper(*args, **kwargs):
-#         old_out, old_err = sys.stdout, sys.stderr
-#         sys.stdout = sys.stderr = io.StringIO()
-#         try:
-#             return func(*args, **kwargs)
-#         finally:
-#             sys.stdout, sys.stderr = old_out, old_err
-#     return wrapper
+def suppress_output(func):
+    def wrapper(*args, **kwargs):
+        old_out, old_err = sys.stdout, sys.stderr
+        sys.stdout = sys.stderr = io.StringIO()
+        try:
+            return func(*args, **kwargs)
+        finally:
+            sys.stdout, sys.stderr = old_out, old_err
+    return wrapper
 
-# @suppress_output
-# def noisy_function():
-#     print("This will not be shown")
-#     raise Exception("This error will also be hidden")
+@suppress_output
+def noisy_function():
+    print("This will not be shown")
+    raise Exception("This error will also be hidden")
 
-# noisy_function()
+noisy_function()
 
 
 
-""" 77
+""" 79
 Write a recursive function generate_permutations_with_repetitions(items, length) that generates all permutations of items of a specified length, allowing repetitions.
 """
 
-# def generate_permutations_with_repetitions(items, length):
-#     if length == 0:
-#         return [[]]
-#     result = []
-#     for i in items:
-#         for p in generate_permutations_with_repetitions(items, length - 1):
-#             result.append([i] + p)
-#     return result
+def generate_permutations_with_repetitions(items, length):
+    if length == 0:
+        return [[]]
+    result = []
+    for i in items:
+        for p in generate_permutations_with_repetitions(items, length - 1):
+            result.append([i] + p)
+    return result
 
-# print(generate_permutations_with_repetitions([1, 2], 3))
+print(generate_permutations_with_repetitions([1, 2], 3))
 
-""" 78
+""" 80
 
 Implement a closure simple_middleware_pipeline(*middleware_functions) that returns a function. This function processes a request through a series of middleware_functions, each potentially modifying the request or stopping the pipeline.
 """
 
-# def simple_middleware_pipeline(*middleware_functions):
-#     def pipeline(request):
-#         for m in middleware_functions:
-#             request = m(request)
-#             if request is None:
-#                 break
-#         return request
-#     return pipeline
+def simple_middleware_pipeline(*middleware_functions):
+    def pipeline(request):
+        for m in middleware_functions:
+            request = m(request)
+            if request is None:
+                break
+        return request
+    return pipeline
 
-# def auth_middleware(req):
-#     if not req.get("user"):
-#         print("Unauthorized")
-#         return None
-#     return req
+def auth_middleware(req):
+    if not req.get("user"):
+        print("Unauthorized")
+        return None
+    return req
 
-# def log_middleware(req):
-#     print("Logging:", req)
-#     return req
+def log_middleware(req):
+    print("Logging:", req)
+    return req
 
-# def data_middleware(req):
-#     req["data"] = "Processed"
-#     return req
+def data_middleware(req):
+    req["data"] = "Processed"
+    return req
 
-# pipe = simple_middleware_pipeline(auth_middleware, log_middleware, data_middleware)
-# print(pipe({"user": "Ashhad"}))
-# print(pipe({}))
+pipe = simple_middleware_pipeline(auth_middleware, log_middleware, data_middleware)
+print(pipe({"user": "Ashhad"}))
+print(pipe({}))
 
-""" 79
+""" 81
 Implement a recursive function count_occurrences_in_nested_list(item, nested_list) that counts how many times item appears in a potentially deeply nested list.
 """
 
-# def count_occurrences_in_nested_list(item, nested_list):
-#     count = 0
-#     for element in nested_list:
-#         if isinstance(element, list):
-#             count += count_occurrences_in_nested_list(item, element)
-#         else:
-#             if element == item:
-#                 count += 1
-#     return count
+def count_occurrences_in_nested_list(item, nested_list):
+    count = 0
+    for element in nested_list:
+        if isinstance(element, list):
+            count += count_occurrences_in_nested_list(item, element)
+        else:
+            if element == item:
+                count += 1
+    return count
 
-# nested_list = [1, [2, 3, [1, 4, 1]], [1, 2, [1, [1]]]]
-# print(count_occurrences_in_nested_list(1, nested_list))
+nested_list = [1, [2, 3, [1, 4, 1]], [1, 2, [1, [1]]]]
+print(count_occurrences_in_nested_list(1, nested_list))
 
-"""80
+"""82
 
 Design a callback system for a QueueProcessor that calls on_item_processed after each item is handled and on_empty_queue when the queue is clear.
 
@@ -2171,56 +2236,56 @@ Processing: Download File 3
   All items processed! Queue is now empty.
 """
 
-# from collections import deque
+from collections import deque
 
-# def make_queue_processor(on_item_processed, on_empty_queue):
-#     q = deque()
-#     def add_item(item):
-#         q.append(item)
-#     def process():
-#         while q:
-#             item = q.popleft()
-#             on_item_processed(item)
-#         on_empty_queue()
-#     return add_item, process
+def make_queue_processor(on_item_processed, on_empty_queue):
+    q = deque()
+    def add_item(item):
+        q.append(item)
+    def process():
+        while q:
+            item = q.popleft()
+            on_item_processed(item)
+        on_empty_queue()
+    return add_item, process
 
-# def item_done(item):
-#     print("Processed:", item)
+def item_done(item):
+    print("Processed:", item)
 
-# def queue_done():
-#     print("Queue is empty!")
+def queue_done():
+    print("Queue is empty!")
 
-# add, run = make_queue_processor(item_done, queue_done)
-# add("task1")
-# add("task2")
-# run()
-
-
+add, run = make_queue_processor(item_done, queue_done)
+add("task1")
+add("task2")
+run()
 
 
 
-""" 81
+
+
+""" 83
 Create a decorator inject_dependencies(**dependencies) that injects pre-defined dependencies as keyword arguments into the decorated function.
 For instance, if you decorate a function with @inject_dependencies(db="DB", cache="CACHE"), those values are passed in every time the function runs — even if the caller doesn’t provide them.
 """
 
-# def inject_dependencies(**dependencies):
-#     def decorator(func):
-#         def wrapper(*args, **kwargs):
-#             kwargs.update(dependencies) # overwrites key-value pairs in kwargs
-#             return func(*args, **kwargs)
-#         return wrapper
-#     return decorator
+def inject_dependencies(**dependencies):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            kwargs.update(dependencies) # overwrites key-value pairs in kwargs
+            return func(*args, **kwargs)
+        return wrapper
+    return decorator
 
-# @inject_dependencies(db="DB connection", cache="some cached value")
-# def process_request(user, db=None, cache=None):
-#     print("User:", user)
-#     print("DB:", db)
-#     print("Cache:", cache)
+@inject_dependencies(db="DB connection", cache="some cached value")
+def process_request(user, db=None, cache=None):
+    print("User:", user)
+    print("DB:", db)
+    print("Cache:", cache)
 
-# process_request("Osama")
+process_request("Osama")
 
-""" 82
+""" 84
 Create a function resolve_dns(hostname, on_success, on_failure) that pretends to look up a website’s IP address.
 If the lookup “succeeds,” it calls on_success(ip_address).
 If it “fails,” it calls on_failure(error_message).
@@ -2231,84 +2296,84 @@ resolve_dns("example.com", on_success=print, on_failure=print)
 """
 
 
-# def resolve_dns(hostname):
-#     dns = {
-#         "example.com": "93.184.216.34",
-#         "google.com": "142.250.72.14",
-#         "openai.com": "104.18.12.123"
-#     }
-#     if hostname in dns:
-#         print("Host found: " + dns[hostname])
-#     else:
-#         print("Fake host not found: " + hostname)
+def resolve_dns(hostname):
+    dns = {
+        "example.com": "93.184.216.34",
+        "google.com": "142.250.72.14",
+        "openai.com": "104.18.12.123"
+    }
+    if hostname in dns:
+        print("Host found: " + dns[hostname])
+    else:
+        print("Fake host not found: " + hostname)
 
-# resolve_dns("example.com")
-# resolve_dns("unknownsite.com")
-
-
+resolve_dns("example.com")
+resolve_dns("unknownsite.com")
 
 
-""" 83
+
+
+""" 85
 Implement a generator subsequences(input_list) that yields all possible subsequences of a given list.
 """
 
-# def subsequences(input_list):
-#     yield []
-#     for i in range(len(input_list)):
-#         for sub in subsequences(input_list[i + 1:]):
-#             yield [input_list[i]] + sub
+def subsequences(input_list):
+    yield []
+    for i in range(len(input_list)):
+        for sub in subsequences(input_list[i + 1:]):
+            yield [input_list[i]] + sub
 
 
 
 
 
-""" 84
+""" 86
 
 Design a closure batch_processor(batch_size, process_batch_func) that returns a function. This function collects items and calls process_batch_func once batch_size items are collected.
 
 """
 
-# def batch_processor(batch_size, process_batch_func):
-#     items = []
-#     def add_item(item):
-#         items.append(item)
-#         if len(items) == batch_size:
-#             process_batch_func(items)
-#             items.clear()
-#     return add_item
+def batch_processor(batch_size, process_batch_func):
+    items = []
+    def add_item(item):
+        items.append(item)
+        if len(items) == batch_size:
+            process_batch_func(items)
+            items.clear()
+    return add_item
 
-# def process_batch(batch):
-#     print("Processing batch:", batch)
+def process_batch(batch):
+    print("Processing batch:", batch)
 
-# f = batch_processor(3, process_batch)
-# f(1)
-# f(2)
-# f(3)
+f = batch_processor(3, process_batch)
+f(1)
+f(2)
+f(3)
 
 
 
-"""85
+"""87
 
 Create a decorator require_secure_connection that checks if a simulated "is_secure_context" global or context variable is True. If not, it raises an error.
 
 """
-# is_secure_context = False
+is_secure_context = False
 
-# def require_secure_connection(func):
-#     def wrapper(*args, **kwargs):
-#         if not is_secure_context:
-#             raise ValueError("Insecure connection not allowed")
-#         return func(*args, **kwargs)
-#     return wrapper
+def require_secure_connection(func):
+    def wrapper(*args, **kwargs):
+        if not is_secure_context:
+            raise ValueError("Insecure connection not allowed")
+        return func(*args, **kwargs)
+    return wrapper
 
-# @require_secure_connection
-# def send_data():
-#     print("Data sent securely")
+@require_secure_connection
+def send_data():
+    print("Data sent securely")
 
-# send_data()
+send_data()
 
 
-""" 86
+""" 88
 Write a generator random_subset(population, k) that gives k random unique items from a list.
 
 Example usage:
@@ -2319,91 +2384,91 @@ for item in random_subset([1, 2, 3, 4, 5], 3):
     """
 
 
-# import random
+import random
 
-# def random_subset(population, k):
-#     pool = population[:]
-#     for _ in range(k):
-#         if not pool:
-#             break
-#         index = random.randint(0, len(pool) - 1)
-#         yield pool.pop(index)
+def random_subset(population, k):
+    pool = population[:]
+    for _ in range(k):
+        if not pool:
+            break
+        index = random.randint(0, len(pool) - 1)
+        yield pool.pop(index)
 
-# for item in random_subset([1, 2, 3, 4, 5], 3):
-#     print(item)
+for item in random_subset([1, 2, 3, 4, 5], 3):
+    print(item)
 
 
 
-""" 87
+""" 89
 Design a higher-order function profile_cpu_time that returns a decorator. This decorator measures the CPU time spent by the decorated function.
 
 """
 
 
 
-# import time
+import time
 
-# def profile_cpu_time():
-#     def decorator(func):
-#         def wrapper(*args, **kwargs):
-#             start = time.process_time()
-#             result = func(*args, **kwargs)
-#             end = time.process_time()
-#             print("CPU time:", end - start, "seconds")
-#             return result
-#         return wrapper
-#     return decorator
+def profile_cpu_time():
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            start = time.process_time()
+            result = func(*args, **kwargs)
+            end = time.process_time()
+            print("CPU time:", end - start, "seconds")
+            return result
+        return wrapper
+    return decorator
 
-# @profile_cpu_time()
-# def do_work():
-#     total = 0
-#     for i in range(1000000):
-#         total += i
-#     return total
+@profile_cpu_time()
+def do_work():
+    total = 0
+    for i in range(1000000):
+        total += i
+    return total
 
-# do_work()
+do_work()
 
 
 
-""" 88
+""" 90
 Create a closure data_version_tracker(initial_data) that returns get_data and update_data functions. update_data should store new versions, and get_data should return the current version.
 """
 
 
 
-# def data_version_tracker(initial_data):
-#     versions = [initial_data]
-#     def get_data():
-#         return versions[-1]
-#     def update_data(new_data):
-#         versions.append(new_data)
-#     return get_data, update_data
+def data_version_tracker(initial_data):
+    versions = [initial_data]
+    def get_data():
+        return versions[-1]
+    def update_data(new_data):
+        versions.append(new_data)
+    return get_data, update_data
 
-# get, update = data_version_tracker({"value": 10})
-# print(get())
-# update({"value": 20})
-# print(get())
-# update({"value": 30})
-# print(get())
+get, update = data_version_tracker({"value": 10})
+print(get())
+update({"value": 20})
+print(get())
+update({"value": 30})
+print(get())
 
 
-""" 89
+""" 91
 Write a function schedule_task_at_interval(func, interval_seconds, times, *args, **kwargs) that calls func repeatedly at the given interval for a fixed number of times.
 """
-# import time
+import time
 
-# def schedule_task_at_interval(func, interval_seconds, times, *args, **kwargs):
-#     for _ in range(times):
-#         func(*args, **kwargs)
-#         time.sleep(interval_seconds)
+def schedule_task_at_interval(func, interval_seconds, times, *args, **kwargs):
+    for _ in range(times):
+        func(*args, **kwargs)
+        time.sleep(interval_seconds)
 
-# def say_hello(name):
-#     print("Hello", name)
+def say_hello(name):
+    print("Hello", name)
 
-# schedule_task_at_interval(say_hello, 0.5, 4, "Osama")
+schedule_task_at_interval(say_hello, 0.5, 4, "Osama")
 
 
-""" 90
+""" 92
 Design a decorator log_execution_flow(level=0) that prints entry/exit messages with indentation to visualize the call stack of nested functions.
 
 level=0 -> represents the indentation level — how deep this function is in the call stack.
@@ -2411,74 +2476,74 @@ level=0 -> represents the indentation level — how deep this function is in the
 Each nested function call increases the level by 1.
 """
 
-# def log_execution_flow(level=0):
-#     def decorator(func):
-#         def wrapper(*args, **kwargs):
-#             print("    " * level + f"Entering {func.__name__}")
-#             result = func(*args, **kwargs)
-#             print("    " * level + f"Exiting {func.__name__}")
-#             return result
-#         return wrapper
-#     return decorator
+def log_execution_flow(level=0):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            print("    " * level + f"Entering {func.__name__}")
+            result = func(*args, **kwargs)
+            print("    " * level + f"Exiting {func.__name__}")
+            return result
+        return wrapper
+    return decorator
 
-# @log_execution_flow(level=0)
-# def a():
-#     b()
+@log_execution_flow(level=0)
+def a():
+    b()
 
-# @log_execution_flow(level=1)
-# def b():
-#     print("Inside b")
+@log_execution_flow(level=1)
+def b():
+    print("Inside b")
 
-# a()
+a()
 
 
 
-""" 91
+""" 93
 
 Create a generator diff_sequences(seq1, seq2) that yields tuples indicating differences between two sequences (e.g., ('+', element), ('-', element), (' ', element)).
 """
 
-# def diff_sequences(seq1, seq2):
-#     i, j = 0, 0
-#     while i < len(seq1) and j < len(seq2):
-#         if seq1[i] == seq2[j]:
-#             yield (' ', seq1[i])
-#             i += 1
-#             j += 1
-#         else:
-#             yield ('-', seq1[i])
-#             yield ('+', seq2[j])
-#             i += 1
-#             j += 1
-#     while i < len(seq1):
-#         yield ('-', seq1[i])
-#         i += 1
-#     while j < len(seq2):
-#         yield ('+', seq2[j])
-#         j += 1
+def diff_sequences(seq1, seq2):
+    i, j = 0, 0
+    while i < len(seq1) and j < len(seq2):
+        if seq1[i] == seq2[j]:
+            yield (' ', seq1[i])
+            i += 1
+            j += 1
+        else:
+            yield ('-', seq1[i])
+            yield ('+', seq2[j])
+            i += 1
+            j += 1
+    while i < len(seq1):
+        yield ('-', seq1[i])
+        i += 1
+    while j < len(seq2):
+        yield ('+', seq2[j])
+        j += 1
 
-# for d in diff_sequences([1,2,3], [2,3,4]):
-#     print(d)
+for d in diff_sequences([1,2,3], [2,3,4]):
+    print(d)
 
 
-""" 92
+""" 94
 Write a higher-order function transform_keys(dictionary, key_transform_func) that applies key_transform_func to all keys in a dictionary and returns a new dictionary.
 
 """
 
-# def transform_keys(dictionary, key_transform_func):
-#     new_dict = {}
-#     for k, v in dictionary.items():
-#         new_key = key_transform_func(k)
-#         new_dict[new_key] = v
-#     return new_dict
+def transform_keys(dictionary, key_transform_func):
+    new_dict = {}
+    for k, v in dictionary.items():
+        new_key = key_transform_func(k)
+        new_dict[new_key] = v
+    return new_dict
 
-# d = {'a': 1, 'b': 2, 'c': 3}
-# new_d = transform_keys(d, lambda k: k.upper())
-# print(new_d)
+d = {'a': 1, 'b': 2, 'c': 3}
+new_d = transform_keys(d, lambda k: k.upper())
+print(new_d)
 
 
-""" 93
+""" 95
 Write a function flatten_dict(nested_dict, separator='.') that flattens a nested dictionary into a single-level dictionary, using separator to join nested keys (e.g., {'a': {'b': 1}} becomes {'a.b': 1}).
 
 """
@@ -2503,23 +2568,23 @@ print(flatten_dict(data))
 
 
 
-""" 94
+""" 96
 
 Write a python code for sorting a list of version strings (e.g., "1.10.0", "1.2.1", "1.5").
 
 Hint: You can do this by using the sorted()'s key="" parameter and define lambda funtion in it 
 """
 
-# l = ["1.10.0", "1.2.1", "1.5"]
+l = ["1.10.0", "1.2.1", "1.5"]
 
-# l_sorted = sorted(l, key=lambda v: [int(x) for x in v.split('.')])
-# print(l_sorted)
-
-
+l_sorted = sorted(l, key=lambda v: [int(x) for x in v.split('.')])
+print(l_sorted)
 
 
 
-""" 95
+
+
+""" 97
 
 Design a decorator read_only_attributes(*attrs) that prevents specified instance attributes from being modified after object initialization. Attempts to change them should raise an AttributeError.
 
@@ -2534,31 +2599,29 @@ user.email = "x@y.com"  # Raises AttributeError
 
 
 
-# def read_only_attributes(*attrs):
-#     def decorator(cls):
-#         original_setattr = cls.__setattr__
-#         def new_setattr(self, name, value):
-#             if name in attrs and hasattr(self, name):
-#                 raise AttributeError(f"{name} is read-only")
-#             original_setattr(self, name, value)
-#         cls.__setattr__ = new_setattr
-#         return cls
-#     return decorator
+def read_only_attributes(*attrs):
+    def decorator(cls):
+        original_setattr = cls.__setattr__
+        def new_setattr(self, name, value):
+            if name in attrs and hasattr(self, name):
+                raise AttributeError(f"{name} is read-only")
+            original_setattr(self, name, value)
+        cls.__setattr__ = new_setattr
+        return cls
+    return decorator
 
-# @read_only_attributes("id", "email")
-# class User:
-#     def __init__(self, id, email):
-#         self.id = id
-#         self.email = email
-#         self.name = "Ashhad"
+@read_only_attributes("id", "email")
+class User:
+    def __init__(self, id, email):
+        self.id = id
+        self.email = email
+        self.name = "Ashhad"
 
-# user = User(123, "a@b.com")
-# print(user.id, user.email)
-# user.name = "New Name"
-# print(user.name)
-# user.email = "x@y.com"
-
-
+user = User(123, "a@b.com")
+print(user.id, user.email)
+user.name = "New Name"
+print(user.name)
+user.email = "x@y.com"
 
 
 
@@ -2569,80 +2632,82 @@ user.email = "x@y.com"  # Raises AttributeError
 
 
 
-""" 96
+
+
+""" 98
 Create a closure configurable_sorter(key_func=None, reverse=False) that returns a function. The returned function takes a list and sorts it using the configured key_func and reverse flag.
 """
 
-# def configurable_sorter(key_func=None, reverse=False):
-#     def sort_list(lst):
-#         lst.sort(key=key_func, reverse=reverse)
-#         return lst
-#     return sort_list
+def configurable_sorter(key_func=None, reverse=False):
+    def sort_list(lst):
+        lst.sort(key=key_func, reverse=reverse)
+        return lst
+    return sort_list
 
-# sorter = configurable_sorter(key_func=len, reverse=True)
-# data = ["apple", "kiwi", "banana"]
-# print(sorter(data))
+sorter = configurable_sorter(key_func=len, reverse=True)
+data = ["apple", "kiwi", "banana"]
+print(sorter(data))
 
-
-
-
-
-
-""" 97
-
-Write a function parse_log_lines(log_lines) that takes a list of log strings in the format "LEVEL: message" and returns a list of dictionaries with "level" and "message" keys.
-"""
-
-# def parse_log_lines(log_lines):
-#     result = []
-#     for line in log_lines:
-#         level, message = line.split(": ", 1)
-#         result.append({"level": level, "message": message})
-#     return result
-
-
-# log_data = [
-#     "INFO: Application started",
-#     "WARNING: Low disk space",
-#     "ERROR: Uncaught exception"
-# ]
-
-# parsed_logs = parse_log_lines(log_data)
-# print(parsed_logs)
-
-""" 98
-
-Implement a higher-order function timed_callable_pool(pool_size, timeout_seconds) that returns a function. This returned function executes a given callable in a thread pool, raising a TimeoutError if it exceeds timeout_seconds.
-
-"""
-
-# import threading
-# import time
-
-# def timed_callable_pool(pool_size, timeout_seconds):
-#     def run_callable(func, *args, **kwargs):
-#         result = [None]
-#         def target():
-#             result[0] = func(*args, **kwargs)
-#         t = threading.Thread(target=target)
-#         t.start()
-#         t.join(timeout_seconds)
-#         if t.is_alive():
-#             raise TimeoutError("Function timed out")
-#         return result[0]
-#     return run_callable
-
-# def slow_add(a, b):
-#     time.sleep(2)
-#     return a + b
-
-# pool = timed_callable_pool(2, 1)
 
 
 
 
 
 """ 99
+
+Write a function parse_log_lines(log_lines) that takes a list of log strings in the format "LEVEL: message" and returns a list of dictionaries with "level" and "message" keys.
+"""
+
+def parse_log_lines(log_lines):
+    result = []
+    for line in log_lines:
+        level, message = line.split(": ", 1)
+        result.append({"level": level, "message": message})
+    return result
+
+
+log_data = [
+    "INFO: Application started",
+    "WARNING: Low disk space",
+    "ERROR: Uncaught exception"
+]
+
+parsed_logs = parse_log_lines(log_data)
+print(parsed_logs)
+
+""" 100
+
+Implement a higher-order function timed_callable_pool(pool_size, timeout_seconds) that returns a function. This returned function executes a given callable in a thread pool, raising a TimeoutError if it exceeds timeout_seconds.
+
+"""
+
+import threading
+import time
+
+def timed_callable_pool(pool_size, timeout_seconds):
+    def run_callable(func, *args, **kwargs):
+        result = [None]
+        def target():
+            result[0] = func(*args, **kwargs)
+        t = threading.Thread(target=target)
+        t.start()
+        t.join(timeout_seconds)
+        if t.is_alive():
+            raise TimeoutError("Function timed out")
+        return result[0]
+    return run_callable
+
+def slow_add(a, b):
+    time.sleep(2)
+    return a + b
+
+pool = timed_callable_pool(2, 1)
+
+
+
+
+
+""" 101
 
 Design a generator sliding_window(iterable, window_size) that yields a "sliding window" (a sub-list) of elements from the iterable, of the specified window_size.
 
@@ -2657,15 +2722,15 @@ window_size → the number of consecutive elements in each window
 
 
 
-# def sliding_window(iterable, window_size):
-#     for i in range(len(iterable) - window_size + 1):
-#         window = []
-#         for j in range(window_size):
-#             window.append(iterable[i + j])
-#         yield window
+def sliding_window(iterable, window_size):
+    for i in range(len(iterable) - window_size + 1):
+        window = []
+        for j in range(window_size):
+            window.append(iterable[i + j])
+        yield window
 
-# for w in sliding_window([1,2,3,4,5], 3):
-#     print(w)
+for w in sliding_window([1,2,3,4,5], 3):
+    print(w)
 
 
 
